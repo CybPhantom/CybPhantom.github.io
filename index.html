@@ -523,6 +523,38 @@ body.en [data-en]{display:revert}
         </ul>
       </div>
     </div>
+
+    <!-- EARLIER EXPERIENCE TOGGLE -->
+    <div class="tl-item reveal reveal-delay-3">
+      <div class="tl-dot" style="border-color:var(--muted2);background:var(--bg)"></div>
+      <div class="tl-card" style="border-color:var(--border);opacity:.85">
+        <button onclick="toggleEarly()" style="all:unset;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <div class="tl-role" style="color:var(--muted)">
+              <span data-ar>خبرات سابقة — قبل 2014</span>
+              <span data-en>Earlier Experience — Before 2014</span>
+            </div>
+            <div class="tl-company" style="color:var(--muted2);font-size:.82rem">
+              <span data-ar>تخليص جمركي · إدخال بيانات · خدمة عملاء · 2011 – 2014</span>
+              <span data-en>Customs Clearance · Data Entry · Customer Service · 2011 – 2014</span>
+            </div>
+          </div>
+          <span id="early-arrow" style="color:var(--muted);font-size:1rem;transition:transform .3s;flex-shrink:0">▼</span>
+        </button>
+        <div id="early-content" style="display:none;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+          <ul class="tl-bullets">
+            <li data-ar>تخليص جمركي: متابعة الإجراءات الجمركية، إعداد المستندات اللازمة للتخليص، التنسيق مع الجهات الحكومية لاستيفاء المتطلبات التنظيمية</li>
+            <li data-en>Customs clearance: handling customs procedures, preparing required clearance documents, coordinating with government entities for regulatory requirements</li>
+            <li data-ar>إدخال البيانات وإدارة السجلات: تسجيل وتنظيم البيانات بدقة عالية، حفظ الوثائق والسجلات وضمان سلامتها وسهولة استرجاعها</li>
+            <li data-en>Data entry & records management: accurate data recording and organization, document filing and ensuring integrity and easy retrieval</li>
+            <li data-ar>خدمة العملاء والتواصل المباشر: الاستقبال، الرد على الاستفسارات، متابعة الطلبات، وبناء علاقات إيجابية مع العملاء في بيئة عمل تجارية</li>
+            <li data-en>Customer service & direct communication: reception, handling inquiries, following up on requests, building positive client relationships in a commercial environment</li>
+            <li data-ar>التنسيق الإداري: دعم الفرق في المهام اليومية، إعداد التقارير، متابعة الإجراءات الداخلية والامتثال للسياسات</li>
+            <li data-en>Administrative coordination: supporting teams in daily tasks, preparing reports, following internal procedures and compliance with policies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="divider"></div>
 </section>
@@ -606,6 +638,13 @@ body.en [data-en]{display:revert}
 </footer>
 
 <script>
+function toggleEarly(){
+  const c=document.getElementById('early-content');
+  const a=document.getElementById('early-arrow');
+  const open=c.style.display==='none';
+  c.style.display=open?'block':'none';
+  a.style.transform=open?'rotate(180deg)':'rotate(0deg)';
+}
 function toggleLang(){
   const b=document.body;b.classList.toggle('en');
   const en=b.classList.contains('en');
