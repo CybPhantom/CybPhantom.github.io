@@ -196,6 +196,18 @@ footer a:hover{color:var(--accent2)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 
+/* VALUE BREAKDOWN */
+.value-breakdown-grid{background:rgba(255,255,255,.02);border:1px solid var(--border2);border-radius:var(--radius2);overflow:hidden}
+.vb-row{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;border-bottom:1px solid var(--border);gap:16px;transition:background .15s}
+.vb-row:hover{background:rgba(59,130,246,.04)}
+.vb-item{color:var(--muted);font-size:.83rem}
+.vb-range{font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;color:var(--text);white-space:nowrap}
+.vb-total{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;
+  background:rgba(16,185,129,.06);border-top:2px solid rgba(16,185,129,.3);gap:16px;flex-wrap:wrap}
+.vb-total>span:first-child{color:var(--muted);font-size:.78rem;max-width:520px;line-height:1.5}
+.vb-total-num{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:800;
+  background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+
 [data-en]{display:none}
 body.en [data-ar]{display:none}
 body.en [data-en]{display:revert}
@@ -348,9 +360,48 @@ body.en [data-en]{display:revert}
       </div>
     </div>
 
-    <div class="value-row reveal">
-      <div><div class="value-label"><span data-ar>القيمة السوقية المكافئة في السوق السعودي</span><span data-en>Equivalent Saudi Market Value</span></div></div>
-      <div class="value-amount">SAR 195,000 – 385,000</div>
+    <!-- MARKET VALUE BREAKDOWN -->
+    <div class="value-section reveal" style="margin-top:28px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)">
+          <span data-ar>القيمة السوقية المحدّثة — تفكيك حقيقي مبني على أسعار السوق السعودي</span>
+          <span data-en>Updated Market Value — Real breakdown based on Saudi market rates</span>
+        </div>
+      </div>
+      <div class="value-breakdown-grid">
+        <div class="vb-row">
+          <span class="vb-item"><span data-ar>ERP أساسي (أسطول، HR، مخزون، مشتريات)</span><span data-en>Core ERP (fleet, HR, inventory, procurement)</span></span>
+          <span class="vb-range">80,000 – 150,000</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-item"><span data-ar>مساعد ذكاء اصطناعي عربي (Claude API + tool-use)</span><span data-en>Arabic AI Assistant (Claude API + tool-use)</span></span>
+          <span class="vb-range">30,000 – 60,000</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-item"><span data-ar>خريطة GPS حية (MapLibre GL + مسارات + KMZ)</span><span data-en>Live GPS Map (MapLibre GL + trails + KMZ)</span></span>
+          <span class="vb-range">20,000 – 40,000</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-item"><span data-ar>ربط حكومي (تم/علم/بيان/مقيم — OAuth كامل)</span><span data-en>Gov Integration (Tamm/Elm/Bayan/Muqeem — full OAuth)</span></span>
+          <span class="vb-range">40,000 – 80,000</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-item"><span data-ar>أمان متعدد الطبقات (MFA، RBAC، تتبع جلسات، PDPL)</span><span data-en>Multi-layer security (MFA, RBAC, session tracking, PDPL)</span></span>
+          <span class="vb-range">20,000 – 40,000</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-item"><span data-ar>PWA + Web Push + محرك تقارير + استيراد Excel ذكي</span><span data-en>PWA + Web Push + Report engine + Smart Excel import</span></span>
+          <span class="vb-range">30,000 – 60,000</span>
+        </div>
+        <div class="vb-row">
+          <span class="vb-item"><span data-ar>ربط دفترة + تدقيق مالي + workflow فواتير + وثائق مركبات</span><span data-en>Daftra + financial audit + invoice workflow + vehicle docs</span></span>
+          <span class="vb-range">20,000 – 40,000</span>
+        </div>
+        <div class="vb-total">
+          <span><span data-ar>⚠️ هذا تقدير محافظ مبني على أسعار شركات البرمجيات السعودية للمشاريع المماثلة — وليس رقمًا تخيلياً</span><span data-en>⚠️ Conservative estimate based on Saudi software company rates for equivalent projects — not an imaginary number</span></span>
+          <span class="vb-total-num">240,000 – 470,000 <span style="font-size:.7em;font-weight:500">ر.س / SAR</span></span>
+        </div>
+      </div>
     </div>
   </div>
   <div class="divider"></div>
