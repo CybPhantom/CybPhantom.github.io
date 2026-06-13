@@ -236,6 +236,101 @@ body.en [data-en]{display:revert}
   .section{padding:64px 16px}.contact-box{padding:28px 18px}
   .timeline{padding-inline-start:22px}.timeline::before{inset-inline-start:5px}.tl-dot{inset-inline-start:-22px}
 }
+
+/* ============================================================
+   PRINT / PDF STYLES
+   ============================================================ */
+@media print {
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+  /* reset dark theme to white */
+  :root{
+    --bg:#fff;--bg2:#f8fafc;--bg3:#f1f5f9;
+    --card:#f8fafc;--card2:#f1f5f9;
+    --border:#e2e8f0;--border2:#cbd5e1;
+    --text:#0f172a;--muted:#475569;--muted2:#64748b;
+    --accent:#1d4ed8;--accent2:#2563eb;
+    --green:#059669;--green2:#10b981;
+    --gold:#d97706;--gold2:#f59e0b;
+    --purple:#7c3aed;--red:#dc2626;
+  }
+  html,body{background:#fff!important;color:#0f172a!important}
+
+  /* hide interactive / decorative elements */
+  nav,
+  .hero-bg,
+  .hero-grid,
+  .hero-badge,
+  .hero-cta,
+  .lang-btn,
+  .early-toggle,
+  #early-jobs,
+  footer,
+  ::-webkit-scrollbar{display:none!important}
+
+  /* remove fixed positioning */
+  nav{position:static}
+
+  /* hero: compact */
+  #hero{min-height:unset;padding:24px 0 16px;display:block;text-align:center}
+  .hero-name{font-size:2rem;color:#0f172a!important;-webkit-text-fill-color:#0f172a!important;background:none!important}
+  .hero-name .grad{background:none!important;-webkit-text-fill-color:#1d4ed8!important;color:#1d4ed8!important}
+  .hero-title{color:#475569!important;font-size:.95rem;margin-bottom:8px}
+  .hero-title strong{color:#0f172a!important}
+  .stats-band{border:1px solid #e2e8f0;border-radius:8px;margin-top:16px;page-break-inside:avoid}
+  .stat-num{color:#1d4ed8!important;-webkit-text-fill-color:#1d4ed8!important;background:none!important}
+  .stat-label{color:#475569!important}
+
+  /* sections */
+  section{padding:20px 0!important;page-break-inside:avoid}
+  .section-title{color:#0f172a!important;border-bottom:2px solid #1d4ed8;padding-bottom:6px;margin-bottom:16px}
+  .section-title .grad{background:none!important;-webkit-text-fill-color:#1d4ed8!important;color:#1d4ed8!important}
+  .section-tag{background:#e0e7ff!important;color:#3730a3!important;border:none}
+
+  /* cards */
+  .feature-card,.value-card,.skill-cat,.timeline-item{
+    background:#f8fafc!important;border:1px solid #e2e8f0!important;
+    box-shadow:none!important;page-break-inside:avoid;border-radius:8px
+  }
+  .feature-card .fc-title{color:#0f172a!important}
+  .feature-card .fc-desc{color:#475569!important}
+  .feature-card .fc-tag{background:#e0e7ff!important;color:#3730a3!important}
+
+  /* value cards */
+  .val-amount{color:#1d4ed8!important;-webkit-text-fill-color:#1d4ed8!important;background:none!important}
+  .val-label,.val-item{color:#0f172a!important}
+  .val-note{color:#475569!important}
+
+  /* skills */
+  .skill-tag{background:#e0e7ff!important;color:#1e40af!important;border:none!important}
+  .skill-cat h4{color:#0f172a!important}
+
+  /* timeline */
+  .tl-period,.tl-company{color:#1d4ed8!important}
+  .tl-role{color:#0f172a!important;font-weight:700}
+  .tl-desc{color:#475569!important}
+  .tl-dot{background:#1d4ed8!important}
+
+  /* contact */
+  #contact .section-tag{background:#e0e7ff!important;color:#3730a3!important}
+  .contact-link{color:#1d4ed8!important;background:#eff6ff!important;border:1px solid #bfdbfe!important}
+
+  /* page layout */
+  .container{max-width:100%!important;padding:0 32px!important}
+  .features-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px!important}
+  .values-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px!important}
+  .skills-grid{grid-template-columns:repeat(3,1fr)!important;gap:10px!important}
+
+  /* gradients in text → plain color */
+  [style*="background-clip"],[class*="grad"]{
+    -webkit-text-fill-color:inherit!important;
+    background:none!important
+  }
+
+  /* page breaks */
+  #features{page-break-before:always}
+  #skills{page-break-before:always}
+}
 </style>
 </head>
 <body>
