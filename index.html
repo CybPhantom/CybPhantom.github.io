@@ -198,15 +198,32 @@ footer a:hover{color:var(--accent2)}
 
 /* VALUE BREAKDOWN */
 .value-breakdown-grid{background:rgba(255,255,255,.02);border:1px solid var(--border2);border-radius:var(--radius2);overflow:hidden}
-.vb-row{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;border-bottom:1px solid var(--border);gap:16px;transition:background .15s}
+.vb-row{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;border-bottom:1px solid var(--border);gap:16px;transition:background .15s}
 .vb-row:hover{background:rgba(59,130,246,.04)}
-.vb-item{color:var(--muted);font-size:.83rem}
-.vb-range{font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;color:var(--text);white-space:nowrap}
-.vb-total{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;
+.vb-item{color:var(--muted);font-size:.82rem}
+.vb-range{font-family:'Inter',sans-serif;font-size:.81rem;font-weight:600;color:var(--text);white-space:nowrap}
+.vb-total{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;
   background:rgba(16,185,129,.06);border-top:2px solid rgba(16,185,129,.3);gap:16px;flex-wrap:wrap}
-.vb-total>span:first-child{color:var(--muted);font-size:.78rem;max-width:520px;line-height:1.5}
-.vb-total-num{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:800;
+.vb-total>span:first-child{color:var(--muted);font-size:.76rem;max-width:520px;line-height:1.5}
+.vb-total-num{font-family:'Inter',sans-serif;font-size:1.35rem;font-weight:800;
   background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+/* VALUE CARDS */
+.value-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:640px){.value-cards{grid-template-columns:1fr}}
+.value-card{border-radius:var(--radius2);padding:24px;position:relative;overflow:hidden}
+.value-card.build{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.25)}
+.value-card.annual{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.25)}
+.value-card::before{content:'';position:absolute;top:0;inset-inline:0;height:3px}
+.value-card.build::before{background:linear-gradient(90deg,var(--accent),var(--purple))}
+.value-card.annual::before{background:linear-gradient(90deg,var(--green),var(--accent))}
+.vc-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.value-card.build .vc-label{color:var(--accent2)}
+.value-card.annual .vc-label{color:var(--green2)}
+.vc-amount{font-family:'Inter',sans-serif;font-size:1.6rem;font-weight:900;line-height:1.1;margin-bottom:8px}
+.value-card.build .vc-amount{background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.value-card.annual .vc-amount{background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.vc-desc{color:var(--muted);font-size:.8rem;line-height:1.6}
+.vc-note{margin-top:10px;font-size:.75rem;color:var(--muted2);border-top:1px solid var(--border);padding-top:8px}
 
 [data-en]{display:none}
 body.en [data-ar]{display:none}
@@ -360,47 +377,56 @@ body.en [data-en]{display:revert}
       </div>
     </div>
 
-    <!-- MARKET VALUE BREAKDOWN -->
+    <!-- MARKET VALUE -->
     <div class="value-section reveal" style="margin-top:28px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)">
-          <span data-ar>القيمة السوقية المحدّثة — تفكيك حقيقي مبني على أسعار السوق السعودي</span>
-          <span data-en>Updated Market Value — Real breakdown based on Saudi market rates</span>
+      <div style="font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px">
+        <span data-ar>القيمة السوقية — تقدير محافظ مبني على أسعار شركات البرمجيات السعودية</span>
+        <span data-en>Market Value — Conservative estimate based on Saudi software company rates</span>
+      </div>
+
+      <!-- TWO CARDS -->
+      <div class="value-cards">
+        <!-- CARD 1: one-time build -->
+        <div class="value-card build">
+          <div class="vc-label"><span data-ar>تكلفة البناء — مرة واحدة</span><span data-en>Build Cost — One Time</span></div>
+          <div class="vc-amount">240k – 470k <span style="font-size:.5em;font-weight:600">ر.س</span></div>
+          <div class="vc-desc">
+            <span data-ar>لو استأجرت شركة برمجة سعودية لبناء هذا النظام من الصفر</span>
+            <span data-en>What a Saudi software company would charge to build this from scratch</span>
+          </div>
+          <div class="vc-note">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="display:flex;justify-content:space-between"><span data-ar>ERP أساسي</span><span data-en>Core ERP</span><span style="font-family:Inter;color:var(--text)">80k–150k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>ربط حكومي (تم/علم/بيان)</span><span data-en>Gov APIs (Tamm/Elm/Bayan)</span><span style="font-family:Inter;color:var(--text)">40k–80k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>مساعد ذكاء اصطناعي عربي</span><span data-en>Arabic AI Assistant</span><span style="font-family:Inter;color:var(--text)">30k–60k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>خريطة GPS حية</span><span data-en>Live GPS Map</span><span style="font-family:Inter;color:var(--text)">20k–40k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>أمان + PWA + تقارير + باقي</span><span data-en>Security + PWA + Reports + rest</span><span style="font-family:Inter;color:var(--text)">70k–140k</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: annual savings -->
+        <div class="value-card annual">
+          <div class="vc-label"><span data-ar>التوفير السنوي المستمر</span><span data-en>Ongoing Annual Savings</span></div>
+          <div class="vc-amount">65k – 225k <span style="font-size:.5em;font-weight:600">ر.س/سنة</span></div>
+          <div class="vc-desc">
+            <span data-ar>ما توفّره الشركة كل سنة مقارنةً باشتراكات الأنظمة الجاهزة + الدعم الخارجي</span>
+            <span data-en>What the company saves every year vs. off-the-shelf subscriptions + external support</span>
+          </div>
+          <div class="vc-note">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="display:flex;justify-content:space-between"><span data-ar>اشتراك ERP جاهز (SAP/Odoo)</span><span data-en>ERP subscription (SAP/Odoo)</span><span style="font-family:Inter;color:var(--text)">30k–120k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>صيانة وتطوير مستمر</span><span data-en>Maintenance & development</span><span style="font-family:Inter;color:var(--text)">20k–60k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>ربط حكومي (خدمة خارجية)</span><span data-en>Gov integration (external)</span><span style="font-family:Inter;color:var(--text)">10k–30k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>استضافة مُدارة + دعم فني</span><span data-en>Managed hosting + support</span><span style="font-family:Inter;color:var(--text)">5k–15k</span></span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="value-breakdown-grid">
-        <div class="vb-row">
-          <span class="vb-item"><span data-ar>ERP أساسي (أسطول، HR، مخزون، مشتريات)</span><span data-en>Core ERP (fleet, HR, inventory, procurement)</span></span>
-          <span class="vb-range">80,000 – 150,000</span>
-        </div>
-        <div class="vb-row">
-          <span class="vb-item"><span data-ar>مساعد ذكاء اصطناعي عربي (Claude API + tool-use)</span><span data-en>Arabic AI Assistant (Claude API + tool-use)</span></span>
-          <span class="vb-range">30,000 – 60,000</span>
-        </div>
-        <div class="vb-row">
-          <span class="vb-item"><span data-ar>خريطة GPS حية (MapLibre GL + مسارات + KMZ)</span><span data-en>Live GPS Map (MapLibre GL + trails + KMZ)</span></span>
-          <span class="vb-range">20,000 – 40,000</span>
-        </div>
-        <div class="vb-row">
-          <span class="vb-item"><span data-ar>ربط حكومي (تم/علم/بيان/مقيم — OAuth كامل)</span><span data-en>Gov Integration (Tamm/Elm/Bayan/Muqeem — full OAuth)</span></span>
-          <span class="vb-range">40,000 – 80,000</span>
-        </div>
-        <div class="vb-row">
-          <span class="vb-item"><span data-ar>أمان متعدد الطبقات (MFA، RBAC، تتبع جلسات، PDPL)</span><span data-en>Multi-layer security (MFA, RBAC, session tracking, PDPL)</span></span>
-          <span class="vb-range">20,000 – 40,000</span>
-        </div>
-        <div class="vb-row">
-          <span class="vb-item"><span data-ar>PWA + Web Push + محرك تقارير + استيراد Excel ذكي</span><span data-en>PWA + Web Push + Report engine + Smart Excel import</span></span>
-          <span class="vb-range">30,000 – 60,000</span>
-        </div>
-        <div class="vb-row">
-          <span class="vb-item"><span data-ar>ربط دفترة + تدقيق مالي + workflow فواتير + وثائق مركبات</span><span data-en>Daftra + financial audit + invoice workflow + vehicle docs</span></span>
-          <span class="vb-range">20,000 – 40,000</span>
-        </div>
-        <div class="vb-total">
-          <span><span data-ar>⚠️ هذا تقدير محافظ مبني على أسعار شركات البرمجيات السعودية للمشاريع المماثلة — وليس رقمًا تخيلياً</span><span data-en>⚠️ Conservative estimate based on Saudi software company rates for equivalent projects — not an imaginary number</span></span>
-          <span class="vb-total-num">240,000 – 470,000 <span style="font-size:.7em;font-weight:500">ر.س / SAR</span></span>
-        </div>
+
+      <div style="margin-top:12px;font-size:.75rem;color:var(--muted2);line-height:1.6;padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;border:1px solid var(--border)">
+        ⚠️ <span data-ar>هذه تقديرات محافظة للمقارنة — الأرقام الفعلية تتفاوت حسب الشركة والمفاوضة. المشروع بُني بشكل فردي كامل بدون شركة برمجة خارجية.</span>
+        <span data-en>These are conservative estimates for comparison — actual figures vary by vendor and negotiation. The project was built entirely solo without an external software company.</span>
       </div>
     </div>
   </div>
