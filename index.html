@@ -237,6 +237,125 @@ body.en [data-en]{display:revert}
   .timeline{padding-inline-start:22px}.timeline::before{inset-inline-start:5px}.tl-dot{inset-inline-start:-22px}
 }
 
+/* ============ SCROLL PROGRESS BAR ============ */
+#progress-bar{position:fixed;top:0;left:0;width:100%;height:3px;z-index:999;transform-origin:left;transform:scaleX(0);
+  background:linear-gradient(90deg,#3b82f6,#10b981,#8b5cf6);pointer-events:none;transition:none}
+
+/* ============ CURSOR GLOW ============ */
+#cursor-glow{position:fixed;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(59,130,246,.07),transparent 65%);
+  transform:translate(-50%,-50%);opacity:0;transition:opacity .4s;will-change:left,top}
+body:hover #cursor-glow{opacity:1}
+
+/* ============ FLOATING ORBS ============ */
+.orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.45;
+  animation:orbFloat var(--dur,22s) ease-in-out infinite alternate}
+.orb1{width:420px;height:420px;background:rgba(59,130,246,.18);top:-10%;right:-5%;--dur:24s;--tx:-60px;--ty:80px}
+.orb2{width:360px;height:360px;background:rgba(16,185,129,.14);bottom:10%;left:-8%;--dur:19s;--tx:50px;--ty:-60px}
+.orb3{width:300px;height:300px;background:rgba(139,92,246,.12);top:40%;right:10%;--dur:28s;--tx:-40px;--ty:50px}
+@keyframes orbFloat{from{transform:translate(0,0) scale(1)}to{transform:translate(var(--tx,0px),var(--ty,0px)) scale(1.08)}}
+
+/* ============ GLASSMORPHISM CARDS ============ */
+.feat-card{background:rgba(255,255,255,.032)!important;backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(255,255,255,.07)!important;transition:all .3s ease}
+.feat-card:hover{background:rgba(59,130,246,.07)!important;border-color:rgba(59,130,246,.28)!important;transform:translateY(-4px) scale(1.01);box-shadow:0 16px 48px rgba(59,130,246,.18),0 0 0 1px rgba(59,130,246,.12)}
+.feat-card.green:hover{background:rgba(16,185,129,.07)!important;border-color:rgba(16,185,129,.28)!important;box-shadow:0 16px 48px rgba(16,185,129,.15)}
+.feat-card.gold:hover{background:rgba(245,158,11,.07)!important;border-color:rgba(245,158,11,.28)!important;box-shadow:0 16px 48px rgba(245,158,11,.15)}
+.feat-card.purple:hover{background:rgba(139,92,246,.07)!important;border-color:rgba(139,92,246,.28)!important;box-shadow:0 16px 48px rgba(139,92,246,.15)}
+.feat-card.red:hover{background:rgba(239,68,68,.07)!important;border-color:rgba(239,68,68,.28)!important}
+
+/* shimmer sweep on card hover */
+.feat-card{overflow:hidden;position:relative}
+.feat-card::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.06),transparent);
+  transition:left .5s ease;pointer-events:none}
+.feat-card:hover::after{left:150%}
+
+.proj-card{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.tech-cat{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.flagship{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.tl-card{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+
+/* ============ 3D TILT ============ */
+.proj-card{transform-style:preserve-3d;will-change:transform;cursor:default}
+.proj-card .proj-icon,.proj-card .proj-name,.proj-card .proj-desc{transform:translateZ(14px)}
+
+/* ============ THEME SWITCHER ============ */
+.nav-controls{display:flex;align-items:center;gap:8px}
+.theme-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--muted);
+  width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.theme-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:var(--text)}
+.theme-panel{position:absolute;top:calc(100% + 8px);inset-inline-end:0;background:rgba(8,13,20,.95);
+  backdrop-filter:blur(24px);border:1px solid var(--border2);border-radius:14px;padding:12px;
+  display:none;grid-template-columns:repeat(2,1fr);gap:8px;min-width:220px;z-index:200;
+  box-shadow:0 16px 48px rgba(0,0,0,.5)}
+.theme-panel.open{display:grid}
+.theme-opt{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;
+  border:1px solid transparent;transition:all .2s;font-size:.8rem;color:var(--muted)}
+.theme-opt:hover{background:rgba(255,255,255,.06);border-color:var(--border2);color:var(--text)}
+.theme-opt.active{border-color:var(--accent);color:var(--accent2);background:rgba(59,130,246,.08)}
+.theme-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.theme-wrap{position:relative}
+
+/* ============ THEMES ============ */
+[data-theme="midnight"]{
+  --bg:#09071a;--bg2:#0e0b28;--bg3:#130f35;
+  --card:#0e0b28;--card2:#130f35;
+  --border:#1e1850;--border2:#2a2270;
+  --text:#e8e0ff;--muted:#7c70b0;--muted2:#4a4480;
+  --accent:#8b5cf6;--accent2:#a78bfa;
+  --green:#10b981;--green2:#34d399;
+  --gold:#f59e0b;--gold2:#fbbf24;
+  --purple:#c084fc;--red:#ef4444;
+  --grad1:linear-gradient(135deg,#8b5cf6,#3b82f6);
+  --grad2:linear-gradient(135deg,#c084fc,#8b5cf6);
+  --shadow2:0 8px 48px rgba(139,92,246,.2)
+}
+[data-theme="desert"]{
+  --bg:#0d0905;--bg2:#160e07;--bg3:#1e1209;
+  --card:#160e07;--card2:#1e1209;
+  --border:#2e1f0a;--border2:#3d2a0e;
+  --text:#fdf4e4;--muted:#9c7a50;--muted2:#6a5038;
+  --accent:#f59e0b;--accent2:#fbbf24;
+  --green:#10b981;--green2:#34d399;
+  --gold:#fbbf24;--gold2:#fde68a;
+  --purple:#a78bfa;--red:#ef4444;
+  --grad1:linear-gradient(135deg,#f59e0b,#ef4444);
+  --grad2:linear-gradient(135deg,#fbbf24,#f59e0b);
+  --shadow2:0 8px 48px rgba(245,158,11,.2)
+}
+[data-theme="light"]{
+  --bg:#f0f4ff;--bg2:#e8eef8;--bg3:#dde5f5;
+  --card:#ffffff;--card2:#f4f7ff;
+  --border:#d1dbf0;--border2:#b8cae8;
+  --text:#0f172a;--muted:#4b6080;--muted2:#8098b8;
+  --accent:#1d4ed8;--accent2:#2563eb;
+  --green:#059669;--green2:#10b981;
+  --gold:#d97706;--gold2:#f59e0b;
+  --purple:#7c3aed;--red:#dc2626;
+  --grad1:linear-gradient(135deg,#1d4ed8,#059669);
+  --grad2:linear-gradient(135deg,#7c3aed,#1d4ed8);
+  --shadow2:0 8px 48px rgba(29,78,216,.15)
+}
+[data-theme="light"] body{background:var(--bg)}
+[data-theme="light"] .feat-card{background:rgba(255,255,255,.7)!important;border-color:rgba(29,78,216,.12)!important}
+[data-theme="light"] .tech-cat,[data-theme="light"] .tl-card,[data-theme="light"] .proj-card{background:rgba(255,255,255,.8);border-color:var(--border)}
+[data-theme="light"] .flagship{background:rgba(255,255,255,.7)}
+[data-theme="light"] nav{background:rgba(240,244,255,.88)!important}
+[data-theme="light"] .orb1{background:rgba(29,78,216,.12)}
+[data-theme="light"] .orb2{background:rgba(5,150,105,.1)}
+[data-theme="light"] .orb3{background:rgba(124,58,237,.08)}
+
+/* ============ TYPING CURSOR ============ */
+.typing-cursor{display:inline-block;width:2px;height:1em;background:var(--accent2);margin-inline-start:3px;vertical-align:middle;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ============ PARTICLES CANVAS ============ */
+#particles-canvas{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5}
+
+/* ============ CODE PROTECTION ============ */
+.flagship,.feat-card,.value-card{user-select:none;-webkit-user-select:none}
+
+
 /* ============================================================
    PRINT / PDF STYLES
    ============================================================ */
@@ -335,6 +454,17 @@ body.en [data-en]{display:revert}
 </head>
 <body>
 
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- CURSOR GLOW -->
+<div id="cursor-glow"></div>
+
+<!-- FLOATING ORBS -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
 <nav id="nav">
   <div class="nav-logo"><span data-ar>أحمد القحطاني</span><span data-en>Ahmed Alqahtani</span></div>
   <ul class="nav-links">
@@ -344,11 +474,23 @@ body.en [data-en]{display:revert}
     <li><a href="#experience" data-ar>الخبرة</a><a href="#experience" data-en>Experience</a></li>
     <li><a href="#contact" data-ar>التواصل</a><a href="#contact" data-en>Contact</a></li>
   </ul>
-  <button class="lang-btn" onclick="toggleLang()"><span data-ar>English</span><span data-en>العربية</span></button>
+  <div class="nav-controls">
+    <div class="theme-wrap">
+      <button class="theme-btn" onclick="toggleThemePanel()" title="تغيير المظهر / Theme">🎨</button>
+      <div class="theme-panel" id="theme-panel">
+        <div class="theme-opt active" data-t="dark" onclick="setTheme('dark')"><span class="theme-dot" style="background:linear-gradient(135deg,#3b82f6,#10b981)"></span><span data-ar>داكن</span><span data-en>Dark</span></div>
+        <div class="theme-opt" data-t="midnight" onclick="setTheme('midnight')"><span class="theme-dot" style="background:linear-gradient(135deg,#8b5cf6,#3b82f6)"></span><span data-ar>منتصف الليل</span><span data-en>Midnight</span></div>
+        <div class="theme-opt" data-t="desert" onclick="setTheme('desert')"><span class="theme-dot" style="background:linear-gradient(135deg,#f59e0b,#ef4444)"></span><span data-ar>صحراوي</span><span data-en>Desert</span></div>
+        <div class="theme-opt" data-t="light" onclick="setTheme('light')"><span class="theme-dot" style="background:linear-gradient(135deg,#1d4ed8,#059669)"></span><span data-ar>فاتح</span><span data-en>Light</span></div>
+      </div>
+    </div>
+    <button class="lang-btn" onclick="toggleLang()"><span data-ar>English</span><span data-en>العربية</span></button>
+  </div>
 </nav>
 
 <section id="about">
 <div id="hero">
+  <canvas id="particles-canvas"></canvas>
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
@@ -721,6 +863,93 @@ body.en [data-en]{display:revert}
 </footer>
 
 <script>
+/* ── CODE PROTECTION ── */
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['u','s','i'].includes(e.key.toLowerCase())&&!e.shiftKey)e.preventDefault()});
+console.log('%c🔒 Ahmed Alqahtani Portfolio','color:#3b82f6;font-size:18px;font-weight:bold');
+console.log('%cDesigned & Built by Ahmed Sultan Alqahtani © 2026','color:#10b981;font-size:12px');
+console.log('%chttps://cybphantom.github.io','color:#8b5cf6;font-size:11px');
+
+/* ── SCROLL PROGRESS BAR ── */
+const pb=document.getElementById('progress-bar');
+window.addEventListener('scroll',()=>{
+  const doc=document.documentElement;
+  pb.style.transform=`scaleX(${doc.scrollTop/(doc.scrollHeight-doc.clientHeight)})`;
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>40);
+},{passive:true});
+
+/* ── CURSOR GLOW ── */
+const cg=document.getElementById('cursor-glow');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
+(function moveCursor(){
+  cx+=(mx-cx)*.08; cy+=(my-cy)*.08;
+  cg.style.left=cx+'px'; cg.style.top=cy+'px';
+  requestAnimationFrame(moveCursor);
+})();
+
+/* ── PARTICLES ── */
+const canvas=document.getElementById('particles-canvas');
+const ctx=canvas.getContext('2d');
+let pts=[];
+function resizeCanvas(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight}
+resizeCanvas();
+window.addEventListener('resize',()=>{resizeCanvas();initPts()},{passive:true});
+function initPts(){
+  pts=[];
+  const n=Math.floor(canvas.width*canvas.height/14000);
+  for(let i=0;i<n;i++) pts.push({
+    x:Math.random()*canvas.width,y:Math.random()*canvas.height,
+    vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
+    r:Math.random()*1.5+.5,o:Math.random()*.5+.2
+  });
+}
+initPts();
+function drawPts(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#3b82f6';
+  pts.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0)p.x=canvas.width; if(p.x>canvas.width)p.x=0;
+    if(p.y<0)p.y=canvas.height; if(p.y>canvas.height)p.y=0;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(59,130,246,${p.o})`;ctx.fill();
+  });
+  pts.forEach((a,i)=>{pts.slice(i+1).forEach(b=>{
+    const d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=`rgba(59,130,246,${.12*(1-d/110)})`;ctx.lineWidth=.6;ctx.stroke()}
+  })});
+  requestAnimationFrame(drawPts);
+}
+drawPts();
+
+/* ── THEME SWITCHER ── */
+let currentTheme='dark';
+function setTheme(t){
+  currentTheme=t;
+  document.documentElement.setAttribute('data-theme',t==='dark'?'':t);
+  document.querySelectorAll('.theme-opt').forEach(o=>o.classList.toggle('active',o.dataset.t===t));
+  document.getElementById('theme-panel').classList.remove('open');
+  localStorage.setItem('pf-theme',t);
+}
+function toggleThemePanel(){
+  document.getElementById('theme-panel').classList.toggle('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.theme-wrap')) document.getElementById('theme-panel').classList.remove('open');
+});
+(()=>{const s=localStorage.getItem('pf-theme');if(s)setTheme(s)})();
+
+/* ── LANG TOGGLE ── */
+function toggleLang(){
+  const b=document.body;b.classList.toggle('en');
+  const en=b.classList.contains('en');
+  document.documentElement.lang=en?'en':'ar';
+  document.documentElement.dir=en?'ltr':'rtl';
+}
+
+/* ── EARLY JOBS ── */
 function toggleEarly(){
   const c=document.getElementById('early-content');
   const a=document.getElementById('early-arrow');
@@ -728,17 +957,12 @@ function toggleEarly(){
   c.style.display=open?'block':'none';
   a.style.transform=open?'rotate(180deg)':'rotate(0deg)';
 }
-function toggleLang(){
-  const b=document.body;b.classList.toggle('en');
-  const en=b.classList.contains('en');
-  document.documentElement.lang=en?'en':'ar';
-  document.documentElement.dir=en?'ltr':'rtl';
-}
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',scrollY>40);
-},{passive:true});
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.12});
+
+/* ── REVEAL ON SCROLL ── */
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── COUNTER ANIMATION ── */
 function animateCounter(el,target,duration=1400){
   const start=performance.now();
   const update=now=>{const t=Math.min((now-start)/duration,1),ease=1-Math.pow(1-t,3);el.textContent=Math.round(ease*target);if(t<1)requestAnimationFrame(update)};
@@ -746,6 +970,56 @@ function animateCounter(el,target,duration=1400){
 }
 const cobs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const t=+x.target.dataset.count;if(!isNaN(t))animateCounter(x.target,t);cobs.unobserve(x.target)}})},{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>cobs.observe(el));
+
+/* ── 3D TILT ON PROJECT CARDS ── */
+document.querySelectorAll('.proj-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(700px) rotateY(${x*14}deg) rotateX(${-y*10}deg) translateY(-6px) scale(1.02)`;
+    card.style.boxShadow=`${-x*20}px ${-y*14}px 40px rgba(59,130,246,.2)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';card.style.boxShadow='';
+  });
+});
+
+/* ── TYPING ANIMATION (hero subtitle) ── */
+(()=>{
+  const phrases=[
+    {ar:'مساعد ذكاء اصطناعي عربي',en:'Arabic AI Assistant'},
+    {ar:'خريطة GPS حية للأسطول',en:'Live GPS Fleet Map'},
+    {ar:'ربط الأنظمة الحكومية السعودية',en:'Saudi Gov API Integration'},
+    {ar:'أمان متعدد الطبقات · PDPL',en:'Multi-Layer Security · PDPL'},
+    {ar:'28+ إصدار إنتاجي',en:'28+ Production Releases'},
+  ];
+  const badge=document.querySelector('.hero-badge');
+  if(!badge)return;
+  const span=document.createElement('span');
+  span.id='typing-text';
+  const cursor=document.createElement('span');
+  cursor.className='typing-cursor';
+  const orig=badge.innerHTML;
+  badge.innerHTML='';
+  badge.appendChild(span);
+  badge.appendChild(cursor);
+  let pi=0,ci=0,deleting=false,pause=0;
+  function type(){
+    const isEn=document.body.classList.contains('en');
+    const text=phrases[pi][isEn?'en':'ar'];
+    if(pause>0){pause--;setTimeout(type,60);return}
+    if(!deleting){
+      span.textContent=text.slice(0,++ci);
+      if(ci===text.length){pause=36;deleting=true}
+    } else {
+      span.textContent=text.slice(0,--ci);
+      if(ci===0){deleting=false;pi=(pi+1)%phrases.length;pause=8}
+    }
+    setTimeout(type,deleting?40:80);
+  }
+  type();
+})();
 </script>
 </body>
 </html>
