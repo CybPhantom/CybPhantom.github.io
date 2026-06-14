@@ -1164,11 +1164,28 @@ body:hover #cursor-glow{opacity:1}
     window.savePdfCfg=function(){
       var d=cfgData(), rows='';
       d.items.forEach(function(i){rows+='<tr><td>'+i.t+'</td><td style="text-align:left">'+fmt(i.p)+' ر.س</td></tr>';});
+      // واترمارك قوي: اسم المؤلف مائل ومكرّر قطرياً خلف كل الصفحة والجداول
+      var wm='<svg xmlns="http://www.w3.org/2000/svg" width="440" height="250"><text x="14" y="150" font-family="Tajawal,Arial" font-size="26" font-style="italic" font-weight="bold" fill="#1a6b45" fill-opacity="0.08" transform="rotate(-28 220 125)">أحمد القحطاني · CybPhantom</text></svg>';
+      var bg='data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(wm)));
       var w=window.open('','_blank');
-      w.document.write('<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>عرض سعر</title>'+
-      '<style>body{font-family:Tajawal,Arial,sans-serif;padding:44px;color:#111}h1{color:#1a6b45;margin:0 0 4px}table{width:100%;border-collapse:collapse;margin:18px 0}td,th{border:1px solid #ccc;padding:10px;text-align:right}th{background:#f3f6f4}.tot{font-size:1.35rem;font-weight:800;color:#1a6b45}.muted{color:#666;font-size:.85rem}.sig{margin-top:48px;border-top:2px solid #1a6b45;padding-top:14px}.sig b{font-size:1.15rem}.sig .lnk{color:#cfd8d3;font-size:.68rem;letter-spacing:.5px}</style></head><body>'+
+      w.document.write('<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>عرض سعر — أحمد القحطاني</title>'+
+      '<style>'+
+      'html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+      'body{font-family:Tajawal,Arial,sans-serif;padding:44px;color:#111;position:relative;background:url('+bg+') repeat}'+
+      '.namebar{font-size:1.9rem;font-style:italic;font-weight:800;color:#1a6b45;letter-spacing:.5px;margin-bottom:2px}'+
+      'h1{color:#1a6b45;margin:6px 0 4px;font-size:1.5rem}'+
+      'table{width:100%;border-collapse:collapse;margin:18px 0;background:transparent}'+
+      'td,th{border:1px solid #bbb;padding:10px;text-align:right;background:transparent}'+
+      'th{background:#eef4f1}'+
+      '.tot{font-size:1.35rem;font-weight:800;color:#1a6b45}'+
+      '.muted{color:#555;font-size:.85rem}'+
+      '.sig{margin-top:46px;border-top:2px solid #1a6b45;padding-top:14px}'+
+      '.sig b{font-size:1.3rem;font-style:italic;color:#1a6b45}'+
+      '.sig .lnk{color:#9bb3a8;font-size:.72rem;letter-spacing:.5px}'+
+      '</style></head><body>'+
+      '<div class="namebar">أحمد القحطاني · Ahmed Alqahtani</div>'+
       '<h1>عرض سعر — نظام أعمال مخصّص</h1>'+
-      '<p class="muted">عرض ساري لفترة محدودة · يشمل خصم 30%</p>'+
+      '<p class="muted">عرض ساري 7 أيام · يشمل خصم 30%</p>'+
       '<p><b>حجم الشركة:</b> '+d.size+' موظف</p>'+
       '<table><thead><tr><th>الخدمة</th><th style="text-align:left">السعر الشهري</th></tr></thead><tbody>'+rows+'</tbody></table>'+
       (d.notes?'<p><b>مميزات إضافية مطلوبة:</b><br>'+d.notes.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</p>':'')+
@@ -1176,7 +1193,7 @@ body:hover #cursor-glow{opacity:1}
       '<p class="tot">بعد خصم 30%: '+fmt(d.disc)+' ر.س/شهر</p>'+
       '<p class="muted">مدة التنفيذ: 1–6 أسابيع حسب الحجم · عربون 50% عند البدء والباقي عند التسليم.</p>'+
       '<p class="muted">الأسعار استرشادية وتُؤكَّد بعرض رسمي. خيار التملّك الكامل متاح عند الطلب.</p>'+
-      '<div class="sig"><b>Ahmed Alqahtani</b><div class="lnk">cybphantom.github.io · © 2026 جميع الحقوق محفوظة</div></div>'+
+      '<div class="sig"><b>أحمد القحطاني — Ahmed Alqahtani</b><div class="lnk">cybphantom.github.io · © 2026 جميع الحقوق محفوظة — هذا العرض ملكية فكرية للمطوّر</div></div>'+
       '</body></html>');
       w.document.close(); w.focus(); setTimeout(function(){w.print();},350);
     };
