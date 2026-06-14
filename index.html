@@ -846,65 +846,228 @@ body:hover #cursor-glow{opacity:1}
   <div class="reveal">
     <div class="section-label"><span data-ar>اطلب نظامك</span><span data-en>Build Your System</span></div>
     <h2 class="section-title"><span data-ar>أنشئ <span class="grad">نظامك الخاص</span></span><span data-en>Get <span class="grad">Your Own System</span></span></h2>
-    <p style="color:var(--muted);max-width:560px;margin:0 0 8px">
-      <span data-ar>أبني لشركتك نظام إدارة عمليات متكامل مفصّل على احتياجك — اشتراك شهري أو سنوي، أو تملّك كامل. اختر ما يناسبك واطلب عرض سعر.</span>
-      <span data-en>I build a tailored operations platform for your company — monthly or annual subscription, or full ownership. Pick what fits and request a quote.</span>
+    <p style="color:var(--muted);max-width:600px;margin:0 0 6px">
+      <span data-ar>أبني لشركتك نظام إدارة عمليات متكامل — اختر باقتك الجاهزة أو صمّم نظامك بنفسك واحصل على سعرك فوراً.</span>
+      <span data-en>I build a complete operations platform for your company — pick a ready plan or design your own and get an instant price.</span>
     </p>
 
-    <div class="value-cards" style="grid-template-columns:repeat(3,1fr)">
-      <!-- Monthly -->
-      <div class="value-card build">
-        <div class="vc-label"><span data-ar>اشتراك شهري</span><span data-en>Monthly Subscription</span></div>
-        <div class="vc-amount"><span data-ar>تبدأ من</span><span data-en>from</span> 2,500 <span style="font-size:.5em;font-weight:600">ر.س/شهر</span></div>
-        <div class="vc-desc"><span data-ar>نظام مستضاف وجاهز + تحديثات ودعم فني مستمر، بدون تكلفة بناء كبيرة مقدّماً</span><span data-en>Hosted, ready system + ongoing updates & support, no large upfront build cost</span></div>
-        <div class="vc-note">
-          <div style="display:flex;flex-direction:column;gap:4px">
-            <span data-ar>✓ استضافة وصيانة مشمولة</span><span data-en>✓ Hosting & maintenance included</span>
-            <span data-ar>✓ تحديثات دورية</span><span data-en>✓ Regular updates</span>
-            <span data-ar>✓ دعم فني</span><span data-en>✓ Technical support</span>
-          </div>
+    <!-- promo + billing toggle -->
+    <div class="promo-banner">🎉 <strong><span data-ar>خصم 30%</span><span data-en>30% OFF</span></strong> <span data-ar>لكل المشتركين قبل نهاية 2026 — العرض لفترة محدودة</span><span data-en>for all subscriptions before end of 2026 — limited time</span></div>
+
+    <div class="bill-toggle">
+      <button class="active" data-m="monthly" onclick="setBilling('monthly')"><span data-ar>شهري</span><span data-en>Monthly</span></button>
+      <button data-m="annual" onclick="setBilling('annual')"><span data-ar>سنوي</span><span data-en>Annual</span> <em><span data-ar>وفّر شهرين</span><span data-en>2 months free</span></em></button>
+    </div>
+
+    <!-- PLANS -->
+    <div class="plans">
+      <!-- LITE -->
+      <div class="plan" data-m="6000" data-a="60000">
+        <div class="plan-name"><span data-ar>لايت</span><span data-en>Lite</span></div>
+        <div class="plan-tag"><span data-ar>للشركات المبتدئة</span><span data-en>For startups</span></div>
+        <div class="plan-price"><span class="price-orig"></span><span class="price-num"></span> <span class="price-suf"><span data-ar>ر.س</span><span data-en>SAR</span><span class="per"></span></span></div>
+        <ul class="plan-feats">
+          <li class="yes"><span data-ar>إدارة الموظفين والإقامات</span><span data-en>HR & residence management</span></li>
+          <li class="yes"><span data-ar>إدارة الأسطول والمركبات</span><span data-en>Fleet & vehicles</span></li>
+          <li class="yes"><span data-ar>المالية والوقود والتقارير</span><span data-en>Finance, fuel & reports</span></li>
+          <li class="yes"><span data-ar>صلاحيات وأمان أساسي + نسخ احتياطي</span><span data-en>Roles, base security + backups</span></li>
+          <li class="yes"><span data-ar>استضافة وتحديثات ودعم</span><span data-en>Hosting, updates & support</span></li>
+          <li class="no"><span data-ar>المبيعات والخرائط الجغرافية</span><span data-en>Sales & geo maps</span></li>
+          <li class="no"><span data-ar>ربط الأنظمة الحكومية</span><span data-en>Government integration</span></li>
+          <li class="no"><span data-ar>مساعد ذكاء اصطناعي</span><span data-en>AI assistant</span></li>
+        </ul>
+        <a class="plan-cta" href="mailto:doomyksa@gmail.com?subject=اشتراك%20باقة%20لايت&body=السلام%20عليكم،%20أرغب%20بالاشتراك%20في%20باقة%20لايت."><span data-ar>اشترك الآن</span><span data-en>Subscribe</span></a>
+      </div>
+
+      <!-- PLUS (featured) -->
+      <div class="plan featured" data-m="12000" data-a="120000">
+        <div class="plan-badge"><span data-ar>الأكثر طلباً</span><span data-en>Most Popular</span></div>
+        <div class="plan-name"><span data-ar>بلس</span><span data-en>Plus</span></div>
+        <div class="plan-tag"><span data-ar>للشركات النامية</span><span data-en>For growing companies</span></div>
+        <div class="plan-price"><span class="price-orig"></span><span class="price-num"></span> <span class="price-suf"><span data-ar>ر.س</span><span data-en>SAR</span><span class="per"></span></span></div>
+        <ul class="plan-feats">
+          <li class="yes"><span data-ar>كل مزايا «لايت» +</span><span data-en>Everything in Lite +</span></li>
+          <li class="yes"><span data-ar>المبيعات والتوزيع والخرائط</span><span data-en>Sales, distribution & maps</span></li>
+          <li class="yes"><span data-ar>ربط الأنظمة الحكومية الرسمية</span><span data-en>Official government integration</span></li>
+          <li class="yes"><span data-ar>أمان متقدم + تشفير + سجل تدقيق</span><span data-en>Advanced security + encryption + audit log</span></li>
+          <li class="yes"><span data-ar>تنبيهات ذكية موحّدة لكل الأقسام</span><span data-en>Unified smart alerts</span></li>
+          <li class="yes"><span data-ar>تقارير تنفيذية وتخصيص إضافي</span><span data-en>Executive reports & customization</span></li>
+          <li class="no"><span data-ar>مساعد ذكاء اصطناعي عربي</span><span data-en>Arabic AI assistant</span></li>
+          <li class="no"><span data-ar>الابتكارات الذكية الحصرية</span><span data-en>Exclusive smart innovations</span></li>
+        </ul>
+        <a class="plan-cta primary" href="mailto:doomyksa@gmail.com?subject=اشتراك%20باقة%20بلس&body=السلام%20عليكم،%20أرغب%20بالاشتراك%20في%20باقة%20بلس."><span data-ar>اشترك الآن</span><span data-en>Subscribe</span></a>
+      </div>
+
+      <!-- PRO -->
+      <div class="plan" data-m="20000" data-a="200000">
+        <div class="plan-name"><span data-ar>برو</span><span data-en>Pro</span></div>
+        <div class="plan-tag"><span data-ar>للمؤسسات الكبيرة</span><span data-en>For enterprises</span></div>
+        <div class="plan-price"><span class="price-orig"></span><span class="price-num"></span> <span class="price-suf"><span data-ar>ر.س</span><span data-en>SAR</span><span class="per"></span></span></div>
+        <ul class="plan-feats">
+          <li class="yes"><span data-ar>كل مزايا «بلس» +</span><span data-en>Everything in Plus +</span></li>
+          <li class="yes"><span data-ar>مساعد ذكاء اصطناعي عربي مدمج</span><span data-en>Embedded Arabic AI assistant</span></li>
+          <li class="yes"><span data-ar>ابتكارات ذكية حصرية (أنظمة قرار وتشغيل)</span><span data-en>Exclusive smart innovations (decision & ops engines)</span></li>
+          <li class="yes"><span data-ar>متعدد الشركات (multi-company)</span><span data-en>Multi-company support</span></li>
+          <li class="yes"><span data-ar>دعم أولوية + تطوير مخصّص</span><span data-en>Priority support + custom dev</span></li>
+          <li class="yes"><span data-ar>تدريب فريق العمل</span><span data-en>Team training</span></li>
+          <li class="yes"><span data-ar>تقارير وتحليلات متقدمة</span><span data-en>Advanced analytics</span></li>
+          <li class="yes"><span data-ar>SLA واتفاقية مستوى خدمة</span><span data-en>SLA included</span></li>
+        </ul>
+        <a class="plan-cta" href="mailto:doomyksa@gmail.com?subject=اشتراك%20باقة%20برو&body=السلام%20عليكم،%20أرغب%20بالاشتراك%20في%20باقة%20برو."><span data-ar>تواصل معنا</span><span data-en>Contact us</span></a>
+      </div>
+    </div>
+
+    <!-- CUSTOM CONFIGURATOR -->
+    <div class="configurator">
+      <div class="cfg-head">
+        <div>
+          <div class="plan-name" style="font-size:1.3rem">🎛️ <span data-ar>صمّم نظامك المخصّص</span><span data-en>Design Your Custom System</span></div>
+          <div class="plan-tag"><span data-ar>اختر مكوّناتك واحصل على سعرك الشهري فوراً</span><span data-en>Pick your components and get your monthly price instantly</span></div>
         </div>
       </div>
-      <!-- Annual -->
-      <div class="value-card annual">
-        <div class="vc-label"><span data-ar>اشتراك سنوي</span><span data-en>Annual Subscription</span></div>
-        <div class="vc-amount"><span data-ar>تبدأ من</span><span data-en>from</span> 25,000 <span style="font-size:.5em;font-weight:600">ر.س/سنة</span></div>
-        <div class="vc-desc"><span data-ar>نفس مزايا الاشتراك الشهري مع توفير يعادل شهرين مجاناً وأولوية في الدعم</span><span data-en>All monthly features with ~2 months free and priority support</span></div>
-        <div class="vc-note">
-          <div style="display:flex;flex-direction:column;gap:4px">
-            <span data-ar>✓ توفير حتى شهرين</span><span data-en>✓ Up to 2 months saved</span>
-            <span data-ar>✓ أولوية الدعم والتطوير</span><span data-en>✓ Priority support & dev</span>
-            <span data-ar>✓ تقارير وتخصيص إضافي</span><span data-en>✓ Extra reports & customization</span>
-          </div>
-        </div>
+
+      <div class="cfg-grid">
+        <label class="cfg-size">
+          <span data-ar>حجم الشركة</span><span data-en>Company size</span>
+          <select id="cfgSize" onchange="recalcCfg()">
+            <option value="1" data-ar="صغيرة (حتى 50 موظف)" data-en="Small (up to 50)">صغيرة (حتى 50 موظف)</option>
+            <option value="1.4" data-ar="متوسطة (50–200)" data-en="Medium (50–200)">متوسطة (50–200)</option>
+            <option value="2" data-ar="كبيرة (+200)" data-en="Large (200+)">كبيرة (+200)</option>
+          </select>
+        </label>
       </div>
-      <!-- Ownership -->
-      <div class="value-card build">
-        <div class="vc-label"><span data-ar>تملّك كامل (بيع)</span><span data-en>Full Ownership (Buy)</span></div>
-        <div class="vc-amount"><span data-ar>تبدأ من</span><span data-en>from</span> 120,000 <span style="font-size:.5em;font-weight:600">ر.س</span></div>
-        <div class="vc-desc"><span data-ar>نظام مخصّص بالكامل + الكود المصدري + النشر على خوادمك — ملكية كاملة لشركتك</span><span data-en>Fully custom system + source code + deployment on your servers — full company ownership</span></div>
-        <div class="vc-note">
-          <div style="display:flex;flex-direction:column;gap:4px">
-            <span data-ar>✓ تخصيص كامل من الصفر</span><span data-en>✓ Fully custom from scratch</span>
-            <span data-ar>✓ تسليم الكود المصدري</span><span data-en>✓ Source code handover</span>
-            <span data-ar>✓ تدريب وتسليم رسمي</span><span data-en>✓ Training & formal handover</span>
-          </div>
+
+      <div class="cfg-items">
+        <label class="cfg-item base"><input type="checkbox" checked disabled> <span class="ci-t"><span data-ar>النظام الأساسي (HR + أسطول + مالية + تقارير)</span><span data-en>Core system (HR + fleet + finance + reports)</span></span> <b>6,000</b></label>
+        <label class="cfg-item"><input type="checkbox" data-price="2000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>المبيعات والتوزيع والخرائط</span><span data-en>Sales, distribution & maps</span></span> <b>+2,000</b></label>
+        <label class="cfg-item"><input type="checkbox" data-price="3000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>ربط الأنظمة الحكومية الرسمية</span><span data-en>Official government integration</span></span> <b>+3,000</b></label>
+        <label class="cfg-item"><input type="checkbox" data-price="4000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>مساعد ذكاء اصطناعي عربي</span><span data-en>Arabic AI assistant</span></span> <b>+4,000</b></label>
+        <label class="cfg-item"><input type="checkbox" data-price="1500" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>أمان متقدم + تشفير + سجل تدقيق</span><span data-en>Advanced security + encryption + audit</span></span> <b>+1,500</b></label>
+        <label class="cfg-item"><input type="checkbox" data-price="3000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>الفوترة الإلكترونية (ZATCA)</span><span data-en>ZATCA e-invoicing</span></span> <b>+3,000</b></label>
+        <label class="cfg-item"><input type="checkbox" data-price="2500" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>متعدد الشركات (multi-company)</span><span data-en>Multi-company</span></span> <b>+2,500</b></label>
+        <label class="cfg-item"><input type="checkbox" data-price="2000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>تطبيق جوال متقدم</span><span data-en>Advanced mobile app</span></span> <b>+2,000</b></label>
+        <label class="cfg-item"><input type="checkbox" data-price="1000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>تقارير وتحليلات متقدمة</span><span data-en>Advanced analytics</span></span> <b>+1,000</b></label>
+      </div>
+
+      <div class="cfg-total">
+        <div>
+          <div style="font-size:.8rem;color:var(--muted)"><span data-ar>سعرك الشهري بعد خصم 30%</span><span data-en>Your monthly price after 30% off</span></div>
+          <div><span class="cfg-orig"></span> <span class="cfg-num" id="cfgPrice">4,200</span> <span style="font-size:.5em;font-weight:600"><span data-ar>ر.س/شهر</span><span data-en>SAR/mo</span></span></div>
+        </div>
+        <div class="cfg-actions">
+          <button type="button" class="btn-primary" onclick="sendCfg()"><span data-ar>📩 أرسل طلبي</span><span data-en>📩 Send my request</span></button>
+          <button type="button" class="btn-ghost" onclick="savePdfCfg()"><span data-ar>📄 احفظ عرضي PDF</span><span data-en>📄 Save quote PDF</span></button>
         </div>
       </div>
     </div>
 
     <div style="margin-top:14px;font-size:.75rem;color:var(--muted2);line-height:1.7;padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;border:1px solid var(--border)">
-      ⚠️ <span data-ar>الأسعار أعلاه تقديرية ابتدائية للاسترشاد — السعر النهائي يُحدَّد بعرض سعر رسمي حسب حجم الشركة والمزايا المطلوبة. عرض تجريبي (ديمو) متاح عند الطلب.</span>
-      <span data-en>Prices above are indicative starting points — the final price is set by a formal quote based on company size and required features. Live demo available on request.</span>
-    </div>
-
-    <div style="text-align:center;margin-top:22px">
-      <a href="mailto:doomyksa@gmail.com?subject=طلب%20عرض%20سعر%20-%20نظام%20إدارة%20عمليات&body=السلام%20عليكم،%20أرغب%20بطلب%20عرض%20سعر%20لإنشاء%20نظام." class="btn-primary">
-        <span data-ar>📩 اطلب عرض سعر</span><span data-en>📩 Request a Quote</span>
-      </a>
+      ⚠️ <span data-ar>الأسعار استرشادية للمقارنة — السعر النهائي بعرض رسمي حسب الحجم والمزايا. خيار التملّك الكامل (شراء النظام + الكود المصدري) متاح عند الطلب. عرض تجريبي (ديمو) متاح.</span>
+      <span data-en>Prices are indicative — final price via formal quote based on size & features. Full ownership (system + source code) available on request. Live demo available.</span>
     </div>
   </div>
   <div class="divider"></div>
+
+  <style>
+  .promo-banner{display:inline-block;background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(59,130,246,.12));border:1px solid var(--accent);color:var(--text);padding:8px 16px;border-radius:999px;font-size:.82rem;margin-bottom:18px}
+  .bill-toggle{display:flex;gap:6px;background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:5px;width:max-content;margin-bottom:26px}
+  .bill-toggle button{background:transparent;border:0;color:var(--muted);padding:9px 22px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:700;font-size:.9rem;transition:all .2s}
+  .bill-toggle button.active{background:var(--grad1);color:#fff}
+  .bill-toggle em{font-style:normal;font-size:.68rem;opacity:.85;margin-inline-start:4px}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .plan{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;position:relative;transition:transform .2s,border-color .2s}
+  .plan:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .plan.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 18px 50px -20px var(--accent)}
+  .plan-badge{position:absolute;top:-12px;inset-inline-start:50%;transform:translateX(50%);background:var(--grad1);color:#fff;font-size:.7rem;font-weight:800;padding:4px 14px;border-radius:999px;white-space:nowrap}
+  body.en .plan-badge{transform:translateX(-50%)}
+  .plan-name{font-size:1.5rem;font-weight:900;margin-bottom:2px}
+  .plan-tag{font-size:.78rem;color:var(--muted);margin-bottom:16px}
+  .plan-price{font-size:2rem;font-weight:900;margin-bottom:4px;font-family:Inter,Tajawal,sans-serif}
+  .plan-price .price-suf{font-size:.5em;font-weight:600;color:var(--muted)}
+  .price-orig{font-size:.5em;font-weight:600;color:var(--muted2);text-decoration:line-through;margin-inline-end:6px}
+  .plan-feats{list-style:none;padding:0;margin:18px 0;display:flex;flex-direction:column;gap:9px;flex:1}
+  .plan-feats li{font-size:.84rem;padding-inline-start:26px;position:relative;line-height:1.5}
+  .plan-feats li::before{position:absolute;inset-inline-start:0;top:0;font-weight:900}
+  .plan-feats li.yes::before{content:'✓';color:var(--accent)}
+  .plan-feats li.no{color:var(--muted2)}
+  .plan-feats li.no::before{content:'✕';color:var(--muted2)}
+  .plan-cta{display:block;text-align:center;padding:11px;border-radius:10px;border:1px solid var(--accent);color:var(--accent2);text-decoration:none;font-weight:700;font-size:.9rem;transition:all .2s}
+  .plan-cta:hover{background:rgba(59,130,246,.1)}
+  .plan-cta.primary{background:var(--grad1);color:#fff;border:0}
+  .configurator{margin-top:24px;background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:26px}
+  .cfg-grid{margin:14px 0}
+  .cfg-size{display:flex;flex-direction:column;gap:6px;font-size:.82rem;color:var(--muted);max-width:280px}
+  .cfg-size select{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px;font-family:inherit;font-size:.9rem}
+  .cfg-items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:8px 0 18px}
+  .cfg-item{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:.84rem;cursor:pointer}
+  .cfg-item .ci-t{flex:1}
+  .cfg-item b{font-family:Inter,sans-serif;color:var(--accent2)}
+  .cfg-item.base{opacity:.85;cursor:default}
+  .cfg-total{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid var(--border);padding-top:18px}
+  .cfg-num{font-size:2rem;font-weight:900;font-family:Inter,sans-serif;color:var(--text)}
+  .cfg-orig{font-size:1rem;font-weight:600;color:var(--muted2);text-decoration:line-through;font-family:Inter,sans-serif}
+  .cfg-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text);padding:11px 18px;border-radius:10px;font-weight:700;cursor:pointer;font-family:inherit;font-size:.88rem}
+  @media(max-width:760px){.plans{grid-template-columns:1fr}.cfg-items{grid-template-columns:1fr}}
+  </style>
+
+  <script>
+  (function(){
+    var billing='monthly', DISC=0.7;
+    function fmt(n){return n.toLocaleString('en-US');}
+    window.setBilling=function(m){
+      billing=m;
+      document.querySelectorAll('.bill-toggle button').forEach(function(b){b.classList.toggle('active',b.dataset.m===m);});
+      document.querySelectorAll('.plan[data-m]').forEach(function(p){
+        var base=billing==='monthly'?+p.dataset.m:+p.dataset.a;
+        var disc=Math.round(base*DISC);
+        p.querySelector('.price-orig').textContent=fmt(base);
+        p.querySelector('.price-num').textContent=fmt(disc);
+        p.querySelector('.per').textContent=(billing==='monthly'?'/'+(document.body.classList.contains('en')?'mo':'شهر'):'/'+(document.body.classList.contains('en')?'yr':'سنة'));
+      });
+    };
+    function cfgData(){
+      var size=+document.getElementById('cfgSize').value;
+      var base=6000, items=[{t:'النظام الأساسي',p:6000}];
+      document.querySelectorAll('.cfg-item input[data-price]:checked').forEach(function(c){
+        var p=+c.dataset.price; base+=p;
+        items.push({t:c.closest('.cfg-item').querySelector('.ci-t [data-ar]').textContent,p:p});
+      });
+      var sized=Math.round(base*size);
+      var disc=Math.round(sized*DISC);
+      var sizeLabel=document.getElementById('cfgSize').selectedOptions[0].getAttribute('data-ar');
+      return {items:items,base:sized,disc:disc,size:sizeLabel};
+    }
+    window.recalcCfg=function(){
+      var d=cfgData();
+      document.getElementById('cfgPrice').textContent=fmt(d.disc);
+      document.querySelector('.cfg-orig').textContent=fmt(d.base);
+    };
+    window.sendCfg=function(){
+      var d=cfgData(), b='السلام عليكم،\nأرغب بنظام مخصّص بالمواصفات التالية:\n\nحجم الشركة: '+d.size+'\n';
+      d.items.forEach(function(i){b+='- '+i.t+' ('+fmt(i.p)+' ر.س)\n';});
+      b+='\nالإجمالي الشهري قبل الخصم: '+fmt(d.base)+' ر.س\nبعد خصم 30%: '+fmt(d.disc)+' ر.س/شهر\n\nالاسم:\nاسم الشركة:\nالجوال:';
+      location.href='mailto:doomyksa@gmail.com?subject='+encodeURIComponent('طلب نظام مخصّص - '+fmt(d.disc)+' ر.س/شهر')+'&body='+encodeURIComponent(b);
+    };
+    window.savePdfCfg=function(){
+      var d=cfgData(), rows='';
+      d.items.forEach(function(i){rows+='<tr><td>'+i.t+'</td><td style="text-align:left">'+fmt(i.p)+' ر.س</td></tr>';});
+      var w=window.open('','_blank');
+      w.document.write('<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>عرض سعر - منصة زاد</title>'+
+      '<style>body{font-family:Tajawal,Arial,sans-serif;padding:40px;color:#111}h1{color:#1a6b45}table{width:100%;border-collapse:collapse;margin:20px 0}td,th{border:1px solid #ccc;padding:10px;text-align:right}.tot{font-size:1.3rem;font-weight:800;color:#1a6b45}.muted{color:#666;font-size:.85rem}</style></head><body>'+
+      '<h1>عرض سعر — نظام إدارة عمليات مخصّص</h1>'+
+      '<p class="muted">المطوّر: Ahmed Alqahtani (CybPhantom) · doomyksa@gmail.com</p>'+
+      '<p><b>حجم الشركة:</b> '+d.size+'</p>'+
+      '<table><thead><tr><th>المكوّن</th><th style="text-align:left">السعر الشهري</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+      '<p>الإجمالي قبل الخصم: '+fmt(d.base)+' ر.س/شهر</p>'+
+      '<p class="tot">بعد خصم 30%: '+fmt(d.disc)+' ر.س/شهر</p>'+
+      '<p class="muted">العرض ساري لفترة محدودة — الأسعار استرشادية وتُأكَّد بعرض رسمي.</p>'+
+      '</body></html>');
+      w.document.close(); w.focus(); setTimeout(function(){w.print();},300);
+    };
+    setBilling('monthly'); recalcCfg();
+  })();
+  </script>
 </section>
 
 <section class="section" id="contact">
