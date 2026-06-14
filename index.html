@@ -949,6 +949,11 @@ body:hover #cursor-glow{opacity:1}
         <label class="cfg-item"><input type="checkbox" data-price="1000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>تقارير وتحليلات متقدمة</span><span data-en>Advanced analytics</span></span> <b>+1,000</b></label>
       </div>
 
+      <label class="cfg-custom">
+        <span data-ar>🖊️ مميزات أخرى تريدها؟ اكتبها هنا (تُسعَّر بعرض خاص)</span><span data-en>🖊️ Other features you want? Write them here (priced separately)</span>
+        <textarea id="cfgNotes" rows="2" placeholder="مثال: ربط مع نظام نقاط بيع، تطبيق للسائقين، تكامل بنكي..."></textarea>
+      </label>
+
       <div class="cfg-total">
         <div>
           <div style="font-size:.8rem;color:var(--muted)"><span data-ar>سعرك الشهري بعد خصم 30%</span><span data-en>Your monthly price after 30% off</span></div>
@@ -1003,6 +1008,8 @@ body:hover #cursor-glow{opacity:1}
   .cfg-item .ci-t{flex:1}
   .cfg-item b{font-family:Inter,sans-serif;color:var(--accent2)}
   .cfg-item.base{opacity:.85;cursor:default}
+  .cfg-custom{display:flex;flex-direction:column;gap:6px;font-size:.82rem;color:var(--muted);margin-bottom:18px}
+  .cfg-custom textarea{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px;font-family:inherit;font-size:.88rem;resize:vertical}
   .cfg-total{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid var(--border);padding-top:18px}
   .cfg-num{font-size:2rem;font-weight:900;font-family:Inter,sans-serif;color:var(--text)}
   .cfg-orig{font-size:1rem;font-weight:600;color:var(--muted2);text-decoration:line-through;font-family:Inter,sans-serif}
@@ -1036,7 +1043,8 @@ body:hover #cursor-glow{opacity:1}
       var sized=Math.round(base*size);
       var disc=Math.round(sized*DISC);
       var sizeLabel=document.getElementById('cfgSize').selectedOptions[0].getAttribute('data-ar');
-      return {items:items,base:sized,disc:disc,size:sizeLabel};
+      var notes=(document.getElementById('cfgNotes').value||'').trim();
+      return {items:items,base:sized,disc:disc,size:sizeLabel,notes:notes};
     }
     window.recalcCfg=function(){
       var d=cfgData();
@@ -1046,6 +1054,7 @@ body:hover #cursor-glow{opacity:1}
     window.sendCfg=function(){
       var d=cfgData(), b='السلام عليكم،\nأرغب بنظام مخصّص بالمواصفات التالية:\n\nحجم الشركة: '+d.size+'\n';
       d.items.forEach(function(i){b+='- '+i.t+' ('+fmt(i.p)+' ر.س)\n';});
+      if(d.notes)b+='\nمميزات إضافية مطلوبة:\n'+d.notes+'\n';
       b+='\nالإجمالي الشهري قبل الخصم: '+fmt(d.base)+' ر.س\nبعد خصم 30%: '+fmt(d.disc)+' ر.س/شهر\n\nالاسم:\nاسم الشركة:\nالجوال:';
       location.href='mailto:doomyksa@gmail.com?subject='+encodeURIComponent('طلب نظام مخصّص - '+fmt(d.disc)+' ر.س/شهر')+'&body='+encodeURIComponent(b);
     };
@@ -1059,6 +1068,7 @@ body:hover #cursor-glow{opacity:1}
       '<p class="muted">المطوّر: Ahmed Alqahtani (CybPhantom) · doomyksa@gmail.com</p>'+
       '<p><b>حجم الشركة:</b> '+d.size+'</p>'+
       '<table><thead><tr><th>المكوّن</th><th style="text-align:left">السعر الشهري</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+      (d.notes?'<p><b>مميزات إضافية مطلوبة:</b><br>'+d.notes.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</p>':'')+
       '<p>الإجمالي قبل الخصم: '+fmt(d.base)+' ر.س/شهر</p>'+
       '<p class="tot">بعد خصم 30%: '+fmt(d.disc)+' ر.س/شهر</p>'+
       '<p class="muted">العرض ساري لفترة محدودة — الأسعار استرشادية وتُأكَّد بعرض رسمي.</p>'+
