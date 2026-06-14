@@ -922,46 +922,46 @@ body:hover #cursor-glow{opacity:1}
       <div class="cfg-head">
         <div>
           <div class="plan-name" style="font-size:1.3rem">🎛️ <span data-ar>صمّم نظامك المخصّص</span><span data-en>Design Your Custom System</span></div>
-          <div class="plan-tag"><span data-ar>اختر مكوّناتك واحصل على سعرك الشهري فوراً</span><span data-en>Pick your components and get your monthly price instantly</span></div>
+          <div class="plan-tag"><span data-ar>اختر خدماتك، تنتقل لسلّتك، واحصل على سعرك فوراً</span><span data-en>Pick services, they move to your cart, get your price instantly</span></div>
         </div>
       </div>
 
-      <div class="cfg-grid">
-        <label class="cfg-size">
-          <span data-ar>حجم الشركة</span><span data-en>Company size</span>
-          <select id="cfgSize" onchange="recalcCfg()">
-            <option value="1" data-ar="صغيرة (حتى 50 موظف)" data-en="Small (up to 50)">صغيرة (حتى 50 موظف)</option>
-            <option value="1.4" data-ar="متوسطة (50–200)" data-en="Medium (50–200)">متوسطة (50–200)</option>
-            <option value="2" data-ar="كبيرة (+200)" data-en="Large (200+)">كبيرة (+200)</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="cfg-items">
-        <label class="cfg-item base"><input type="checkbox" checked disabled> <span class="ci-t"><span data-ar>النظام الأساسي (HR + أسطول + مالية + تقارير)</span><span data-en>Core system (HR + fleet + finance + reports)</span></span> <b>6,000</b></label>
-        <label class="cfg-item"><input type="checkbox" data-price="2000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>المبيعات والتوزيع والخرائط</span><span data-en>Sales, distribution & maps</span></span> <b>+2,000</b></label>
-        <label class="cfg-item"><input type="checkbox" data-price="3000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>ربط الأنظمة الحكومية الرسمية</span><span data-en>Official government integration</span></span> <b>+3,000</b></label>
-        <label class="cfg-item"><input type="checkbox" data-price="4000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>مساعد ذكاء اصطناعي عربي</span><span data-en>Arabic AI assistant</span></span> <b>+4,000</b></label>
-        <label class="cfg-item"><input type="checkbox" data-price="1500" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>أمان متقدم + تشفير + سجل تدقيق</span><span data-en>Advanced security + encryption + audit</span></span> <b>+1,500</b></label>
-        <label class="cfg-item"><input type="checkbox" data-price="3000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>الفوترة الإلكترونية (ZATCA)</span><span data-en>ZATCA e-invoicing</span></span> <b>+3,000</b></label>
-        <label class="cfg-item"><input type="checkbox" data-price="2500" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>متعدد الشركات (multi-company)</span><span data-en>Multi-company</span></span> <b>+2,500</b></label>
-        <label class="cfg-item"><input type="checkbox" data-price="2000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>تطبيق جوال متقدم</span><span data-en>Advanced mobile app</span></span> <b>+2,000</b></label>
-        <label class="cfg-item"><input type="checkbox" data-price="1000" onchange="recalcCfg()"> <span class="ci-t"><span data-ar>تقارير وتحليلات متقدمة</span><span data-en>Advanced analytics</span></span> <b>+1,000</b></label>
-      </div>
-
-      <label class="cfg-custom">
-        <span data-ar>🖊️ مميزات أخرى تريدها؟ اكتبها هنا (تُسعَّر بعرض خاص)</span><span data-en>🖊️ Other features you want? Write them here (priced separately)</span>
-        <textarea id="cfgNotes" rows="2" placeholder="مثال: ربط مع نظام نقاط بيع، تطبيق للسائقين، تكامل بنكي..."></textarea>
+      <label class="cfg-size">
+        <span data-ar>حجم الشركة (عدد الموظفين)</span><span data-en>Company size (employees)</span>
+        <select id="cfgSize" onchange="recalcCfg()">
+          <option value="1">1 – 20</option>
+          <option value="1.3">21 – 50</option>
+          <option value="1.6">51 – 100</option>
+          <option value="2">101 – 200</option>
+          <option value="2.6">201 – 500</option>
+          <option value="3.4">+500</option>
+        </select>
       </label>
 
-      <div class="cfg-total">
-        <div>
-          <div style="font-size:.8rem;color:var(--muted)"><span data-ar>سعرك الشهري بعد خصم 30%</span><span data-en>Your monthly price after 30% off</span></div>
-          <div><span class="cfg-orig"></span> <span class="cfg-num" id="cfgPrice">4,200</span> <span style="font-size:.5em;font-weight:600"><span data-ar>ر.س/شهر</span><span data-en>SAR/mo</span></span></div>
+      <div class="cfg-layout">
+        <div class="cfg-col">
+          <div class="cfg-col-h"><span data-ar>الخدمات المتاحة — اضغط للإضافة</span><span data-en>Available services — click to add</span></div>
+          <div id="cfgAvail" class="cfg-list"></div>
         </div>
-        <div class="cfg-actions">
-          <button type="button" class="btn-primary" onclick="sendCfg()"><span data-ar>📩 أرسل طلبي</span><span data-en>📩 Send my request</span></button>
-          <button type="button" class="btn-ghost" onclick="savePdfCfg()"><span data-ar>📄 احفظ عرضي PDF</span><span data-en>📄 Save quote PDF</span></button>
+        <div class="cfg-col">
+          <div class="cfg-col-h">🛒 <span data-ar>سلّة طلبك</span><span data-en>Your cart</span></div>
+          <div id="cfgCart" class="cfg-list"></div>
+
+          <label class="cfg-custom">
+            <span data-ar>🖊️ مميزات أخرى تريدها؟ اكتبها (تُسعَّر بعرض خاص)</span><span data-en>🖊️ Other features? Write them (priced separately)</span>
+            <textarea id="cfgNotes" rows="2" placeholder="مثال: ربط نقاط بيع، تطبيق سائقين، تكامل بنكي..."></textarea>
+          </label>
+
+          <div class="cfg-total">
+            <div>
+              <div style="font-size:.78rem;color:var(--muted)"><span data-ar>سعرك الشهري بعد خصم 30%</span><span data-en>Monthly price after 30% off</span></div>
+              <div><span class="cfg-orig"></span> <span class="cfg-num" id="cfgPrice">4,200</span> <span style="font-size:.5em;font-weight:600"><span data-ar>ر.س/شهر</span><span data-en>SAR/mo</span></span></div>
+            </div>
+          </div>
+          <div class="cfg-actions">
+            <button type="button" class="btn-primary" onclick="sendCfg()"><span data-ar>📩 أرسل طلبي</span><span data-en>📩 Send my request</span></button>
+            <button type="button" class="btn-ghost" onclick="savePdfCfg()"><span data-ar>📄 نسخة PDF</span><span data-en>📄 PDF copy</span></button>
+          </div>
         </div>
       </div>
     </div>
@@ -1022,7 +1022,18 @@ body:hover #cursor-glow{opacity:1}
   .cfg-item .ci-t{flex:1}
   .cfg-item b{font-family:Inter,sans-serif;color:var(--accent2)}
   .cfg-item.base{opacity:.85;cursor:default}
-  .cfg-custom{display:flex;flex-direction:column;gap:6px;font-size:.82rem;color:var(--muted);margin-bottom:18px}
+  .cfg-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+  .cfg-col-h{font-size:.82rem;font-weight:700;color:var(--muted);margin-bottom:10px}
+  .cfg-list{display:flex;flex-direction:column;gap:8px;min-height:40px}
+  .cfg-row{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:.84rem;text-align:inherit;width:100%;color:var(--text);font-family:inherit}
+  .cfg-row b{font-family:Inter,sans-serif;color:var(--accent2);white-space:nowrap}
+  button.cfg-row.add{cursor:pointer;transition:all .15s}
+  button.cfg-row.add:hover{border-color:var(--accent);background:rgba(59,130,246,.08)}
+  .cfg-row.in{border-color:var(--accent)}
+  .cfg-row.base{opacity:.85}
+  .cfg-x{background:rgba(239,68,68,.12);color:#ef4444;border:0;border-radius:6px;width:24px;height:24px;cursor:pointer;font-weight:800;line-height:1}
+  .cfg-empty{color:var(--muted2);font-size:.82rem;text-align:center;padding:14px}
+  .cfg-custom{display:flex;flex-direction:column;gap:6px;font-size:.82rem;color:var(--muted);margin:16px 0 18px}
   .cfg-custom textarea{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px;font-family:inherit;font-size:.88rem;resize:vertical}
   .cfg-total{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid var(--border);padding-top:18px}
   .cfg-num{font-size:2rem;font-weight:900;font-family:Inter,sans-serif;color:var(--text)}
@@ -1037,7 +1048,7 @@ body:hover #cursor-glow{opacity:1}
   .svc-d{font-size:.8rem;color:var(--muted);line-height:1.5;margin-bottom:10px}
   .svc-p{font-weight:800;color:var(--accent2);font-family:Inter,Tajawal,sans-serif}
   @media(max-width:760px){.svc-grid{grid-template-columns:1fr}}
-  @media(max-width:760px){.plans{grid-template-columns:1fr}.cfg-items{grid-template-columns:1fr}}
+  @media(max-width:760px){.plans{grid-template-columns:1fr}.cfg-items{grid-template-columns:1fr}.cfg-layout{grid-template-columns:1fr}}
   </style>
 
   <script>
@@ -1055,18 +1066,59 @@ body:hover #cursor-glow{opacity:1}
         p.querySelector('.per').textContent=(billing==='monthly'?'/'+(document.body.classList.contains('en')?'mo':'شهر'):'/'+(document.body.classList.contains('en')?'yr':'سنة'));
       });
     };
+    var SIZE_LABEL={'1':'1–20','1.3':'21–50','1.6':'51–100','2':'101–200','2.6':'201–500','3.4':'+500'};
+    var SERVICES=[
+      {id:'sales',ar:'المبيعات والتوزيع والخرائط',en:'Sales, distribution & maps',p:2000},
+      {id:'gov',ar:'ربط الأنظمة الحكومية الرسمية',en:'Official government integration',p:3000},
+      {id:'ai',ar:'مساعد ذكاء اصطناعي عربي',en:'Arabic AI assistant',p:4000},
+      {id:'zatca',ar:'الفوترة الإلكترونية (ZATCA)',en:'ZATCA e-invoicing',p:3000},
+      {id:'multi',ar:'متعدد الفروع / الشركات',en:'Multi-branch / company',p:2500},
+      {id:'gps',ar:'تتبع GPS مباشر للأسطول',en:'Live GPS fleet tracking',p:2500},
+      {id:'payroll',ar:'الرواتب وقسائم الراتب',en:'Payroll & payslips',p:2000},
+      {id:'mobile',ar:'تطبيق جوال متقدم',en:'Advanced mobile app',p:2000},
+      {id:'inventory',ar:'إدارة المخزون والمستودعات',en:'Inventory & warehouses',p:1500},
+      {id:'maint',ar:'إدارة الصيانة والأصول',en:'Maintenance & assets',p:1500},
+      {id:'security',ar:'أمان متقدم + تشفير + سجل تدقيق',en:'Advanced security + audit',p:1500},
+      {id:'decision',ar:'لوحة قرار ذكية موحّدة',en:'Unified smart decision center',p:1500},
+      {id:'pay',ar:'بوابة دفع إلكتروني',en:'Online payment gateway',p:1500},
+      {id:'approvals',ar:'نظام موافقات وسير عمل',en:'Approvals & workflow',p:1200},
+      {id:'analytics',ar:'تقارير وتحليلات متقدمة',en:'Advanced analytics',p:1000},
+      {id:'notify',ar:'إشعارات واتساب / SMS',en:'WhatsApp / SMS notifications',p:1000},
+      {id:'vault',ar:'خزنة وثائق آمنة',en:'Secure document vault',p:800},
+      {id:'msg',ar:'مراسلة عملاء داخلية',en:'Internal customer messaging',p:800}
+    ];
+    var cart={};
+    function isEn(){return document.body.classList.contains('en');}
+    function svcLabel(s){return isEn()?s.en:s.ar;}
+    window.renderCfg=function(){
+      var av=document.getElementById('cfgAvail'), ct=document.getElementById('cfgCart');
+      if(!av||!ct)return;
+      av.innerHTML=''; ct.innerHTML='<div class="cfg-row base"><span>'+(isEn()?'Core system (included)':'النظام الأساسي (مشمول)')+'</span><b>6,000</b></div>';
+      SERVICES.forEach(function(s){
+        if(cart[s.id]){
+          var r=document.createElement('div'); r.className='cfg-row in';
+          r.innerHTML='<span>'+svcLabel(s)+'</span><span style="display:flex;gap:8px;align-items:center"><b>+'+fmt(s.p)+'</b> <button type="button" class="cfg-x" data-id="'+s.id+'">✕</button></span>';
+          ct.appendChild(r);
+        } else {
+          var a=document.createElement('button'); a.type='button'; a.className='cfg-row add'; a.dataset.id=s.id;
+          a.innerHTML='<span>＋ '+svcLabel(s)+'</span><b>+'+fmt(s.p)+'</b>';
+          av.appendChild(a);
+        }
+      });
+      if(!av.children.length) av.innerHTML='<div class="cfg-empty">'+(isEn()?'All services added ✓':'كل الخدمات مضافة ✓')+'</div>';
+      recalcCfg();
+    };
+    document.addEventListener('click',function(e){
+      var add=e.target.closest('.cfg-row.add'); if(add){cart[add.dataset.id]=true;renderCfg();return;}
+      var x=e.target.closest('.cfg-x'); if(x){delete cart[x.dataset.id];renderCfg();return;}
+    });
     function cfgData(){
       var size=+document.getElementById('cfgSize').value;
-      var base=6000, items=[{t:'النظام الأساسي',p:6000}];
-      document.querySelectorAll('.cfg-item input[data-price]:checked').forEach(function(c){
-        var p=+c.dataset.price; base+=p;
-        items.push({t:c.closest('.cfg-item').querySelector('.ci-t [data-ar]').textContent,p:p});
-      });
-      var sized=Math.round(base*size);
-      var disc=Math.round(sized*DISC);
-      var sizeLabel=document.getElementById('cfgSize').selectedOptions[0].getAttribute('data-ar');
+      var base=6000, items=[{t:isEn()?'Core system':'النظام الأساسي',p:6000}];
+      SERVICES.forEach(function(s){if(cart[s.id]){base+=s.p;items.push({t:svcLabel(s),p:s.p});}});
+      var sized=Math.round(base*size), disc=Math.round(sized*DISC);
       var notes=(document.getElementById('cfgNotes').value||'').trim();
-      return {items:items,base:sized,disc:disc,size:sizeLabel,notes:notes};
+      return {items:items,base:sized,disc:disc,size:SIZE_LABEL[document.getElementById('cfgSize').value],notes:notes};
     }
     window.recalcCfg=function(){
       var d=cfgData();
@@ -1074,30 +1126,31 @@ body:hover #cursor-glow{opacity:1}
       document.querySelector('.cfg-orig').textContent=fmt(d.base);
     };
     window.sendCfg=function(){
-      var d=cfgData(), b='السلام عليكم،\nأرغب بنظام مخصّص بالمواصفات التالية:\n\nحجم الشركة: '+d.size+'\n';
+      var d=cfgData(), b='السلام عليكم،\nأرغب بنظام مخصّص بالمواصفات التالية:\n\nحجم الشركة (عدد الموظفين): '+d.size+'\n\nالخدمات المختارة:\n';
       d.items.forEach(function(i){b+='- '+i.t+' ('+fmt(i.p)+' ر.س)\n';});
       if(d.notes)b+='\nمميزات إضافية مطلوبة:\n'+d.notes+'\n';
-      b+='\nالإجمالي الشهري قبل الخصم: '+fmt(d.base)+' ر.س\nبعد خصم 30%: '+fmt(d.disc)+' ر.س/شهر\n\nالاسم:\nاسم الشركة:\nالجوال:';
+      b+='\nالإجمالي الشهري قبل الخصم: '+fmt(d.base)+' ر.س\nبعد خصم 30%: '+fmt(d.disc)+' ر.س/شهر\n\n— بياناتي —\nالاسم:\nاسم الشركة:\nالجوال:';
       location.href='mailto:doomyksa@gmail.com?subject='+encodeURIComponent('طلب نظام مخصّص - '+fmt(d.disc)+' ر.س/شهر')+'&body='+encodeURIComponent(b);
     };
     window.savePdfCfg=function(){
       var d=cfgData(), rows='';
       d.items.forEach(function(i){rows+='<tr><td>'+i.t+'</td><td style="text-align:left">'+fmt(i.p)+' ر.س</td></tr>';});
       var w=window.open('','_blank');
-      w.document.write('<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>عرض سعر - منصة زاد</title>'+
-      '<style>body{font-family:Tajawal,Arial,sans-serif;padding:40px;color:#111}h1{color:#1a6b45}table{width:100%;border-collapse:collapse;margin:20px 0}td,th{border:1px solid #ccc;padding:10px;text-align:right}.tot{font-size:1.3rem;font-weight:800;color:#1a6b45}.muted{color:#666;font-size:.85rem}</style></head><body>'+
-      '<h1>عرض سعر — نظام إدارة عمليات مخصّص</h1>'+
-      '<p class="muted">المطوّر: Ahmed Alqahtani (CybPhantom) · doomyksa@gmail.com</p>'+
-      '<p><b>حجم الشركة:</b> '+d.size+'</p>'+
-      '<table><thead><tr><th>المكوّن</th><th style="text-align:left">السعر الشهري</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+      w.document.write('<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>عرض سعر</title>'+
+      '<style>body{font-family:Tajawal,Arial,sans-serif;padding:44px;color:#111}h1{color:#1a6b45;margin:0 0 4px}table{width:100%;border-collapse:collapse;margin:18px 0}td,th{border:1px solid #ccc;padding:10px;text-align:right}th{background:#f3f6f4}.tot{font-size:1.35rem;font-weight:800;color:#1a6b45}.muted{color:#666;font-size:.85rem}.sig{margin-top:48px;border-top:2px solid #1a6b45;padding-top:14px}.sig b{font-size:1.15rem}.sig .lnk{color:#cfd8d3;font-size:.68rem;letter-spacing:.5px}</style></head><body>'+
+      '<h1>عرض سعر — نظام أعمال مخصّص</h1>'+
+      '<p class="muted">عرض ساري لفترة محدودة · يشمل خصم 30%</p>'+
+      '<p><b>حجم الشركة:</b> '+d.size+' موظف</p>'+
+      '<table><thead><tr><th>الخدمة</th><th style="text-align:left">السعر الشهري</th></tr></thead><tbody>'+rows+'</tbody></table>'+
       (d.notes?'<p><b>مميزات إضافية مطلوبة:</b><br>'+d.notes.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</p>':'')+
       '<p>الإجمالي قبل الخصم: '+fmt(d.base)+' ر.س/شهر</p>'+
       '<p class="tot">بعد خصم 30%: '+fmt(d.disc)+' ر.س/شهر</p>'+
-      '<p class="muted">العرض ساري لفترة محدودة — الأسعار استرشادية وتُأكَّد بعرض رسمي.</p>'+
+      '<p class="muted">الأسعار استرشادية وتُؤكَّد بعرض رسمي. خيار التملّك الكامل متاح عند الطلب.</p>'+
+      '<div class="sig"><b>Ahmed Alqahtani</b><div class="lnk">cybphantom.github.io · © 2026 جميع الحقوق محفوظة</div></div>'+
       '</body></html>');
-      w.document.close(); w.focus(); setTimeout(function(){w.print();},300);
+      w.document.close(); w.focus(); setTimeout(function(){w.print();},350);
     };
-    setBilling('monthly'); recalcCfg();
+    renderCfg(); setBilling('monthly');
   })();
   </script>
 </section>
