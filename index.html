@@ -357,6 +357,18 @@ body:hover #cursor-glow{opacity:1}
 /* ============ PARTICLES CANVAS ============ */
 #particles-canvas{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5}
 
+/* ============ FLOATING SALES BUTTON ============ */
+#fab-sales{position:fixed;bottom:22px;inset-inline-end:22px;z-index:300;
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#f59e0b,#10b981);color:#fff;text-decoration:none;
+  padding:13px 22px;border-radius:999px;font-weight:800;font-size:.92rem;
+  box-shadow:0 10px 32px rgba(245,158,11,.4);opacity:0;transform:translateY(20px);
+  pointer-events:none;transition:opacity .3s,transform .3s,box-shadow .2s}
+#fab-sales.show{opacity:1;transform:translateY(0);pointer-events:auto}
+#fab-sales:hover{box-shadow:0 14px 40px rgba(16,185,129,.5);transform:translateY(-2px)}
+@media print{#fab-sales{display:none!important}}
+@media(max-width:768px){#fab-sales{bottom:16px;inset-inline-end:16px;padding:11px 18px;font-size:.85rem}}
+
 /* ============ CODE PROTECTION ============ */
 .flagship,.feat-card,.value-card{user-select:none;-webkit-user-select:none}
 
@@ -474,6 +486,11 @@ body:hover #cursor-glow{opacity:1}
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
+
+<!-- FLOATING SALES BUTTON -->
+<a href="#offer" id="fab-sales" aria-label="اطلب نظامك">
+  🚀 <span data-ar>أنشئ نظامك</span><span data-en>Build your system</span>
+</a>
 
 <nav id="nav">
   <div class="nav-logo"><span data-ar>أحمد القحطاني</span><span data-en>Ahmed Alqahtani</span></div>
@@ -631,7 +648,7 @@ body:hover #cursor-glow{opacity:1}
       <div class="feat-card gold reveal reveal-delay-4">
         <div class="feat-icon">🛡️</div>
         <div class="feat-title"><span data-ar>توافق PDPL + أمان الكود</span><span data-en>PDPL Compliance + Code Security</span></div>
-        <div class="feat-desc"><span data-ar>Lighthouse أداء 93/وصولية 100 + Gitleaks 104 commit بلا تسريبات + Semgrep MCP + Dependabot + CSP</span><span data-en>Lighthouse perf 93/accessibility 100 + Gitleaks 104 clean commits + Semgrep MCP + Dependabot + CSP</span></div>
+        <div class="feat-desc"><span data-ar>Lighthouse أداء 93/وصولية 100 + Gitleaks 130+ commit بلا تسريبات + Semgrep MCP + Dependabot + CSP</span><span data-en>Lighthouse perf 93/accessibility 100 + Gitleaks 130+ clean commits + Semgrep MCP + Dependabot + CSP</span></div>
       </div>
     </div>
 
@@ -877,10 +894,22 @@ body:hover #cursor-glow{opacity:1}
   <div class="reveal">
     <div class="section-label"><span data-ar>اطلب نظامك</span><span data-en>Build Your System</span></div>
     <h2 class="section-title"><span data-ar>أنشئ <span class="grad">نظامك الخاص</span></span><span data-en>Get <span class="grad">Your Own System</span></span></h2>
-    <p style="color:var(--muted);max-width:640px;margin:0 0 6px">
-      <span data-ar>أبني أنظمة إدارة وأعمال متكاملة <strong>لأي قطاع</strong> — لوجستيات، تقنية، مقاولات، تجارة، مطاعم، عقار، خدمات. اختر باقتك الجاهزة أو صمّم نظامك بنفسك واحصل على سعرك فوراً.</span>
-      <span data-en>I build complete business & management systems for <strong>any industry</strong> — logistics, tech, contracting, retail, F&B, real estate, services. Pick a ready plan or design your own and get an instant price.</span>
+    <p style="color:var(--muted);max-width:680px;margin:0 0 12px">
+      <span data-ar>أبني أنظمة إدارة وأعمال متكاملة <strong>لأي قطاع</strong> — من شركة لوجستية كبيرة إلى ورشة سيارات أو محل قطع غيار. اختر باقتك الجاهزة، أو صمّم نظامك بنفسك واحصل على سعرك فوراً، أو تملّك النظام بالكامل بدفعة واحدة.</span>
+      <span data-en>I build complete business & management systems for <strong>any industry</strong> — from a large logistics company to a car workshop or spare-parts shop. Pick a ready plan, design your own and get an instant price, or own the whole system with a one-time payment.</span>
     </p>
+
+    <!-- sector chips -->
+    <div class="sectors">
+      <span class="sector">🚛 <span data-ar>لوجستيات وأساطيل</span><span data-en>Logistics & fleets</span></span>
+      <span class="sector">🔧 <span data-ar>ورش سيارات</span><span data-en>Car workshops</span></span>
+      <span class="sector">⚙️ <span data-ar>قطع غيار</span><span data-en>Spare parts</span></span>
+      <span class="sector">🍽️ <span data-ar>مطاعم وكافيهات</span><span data-en>Restaurants & cafés</span></span>
+      <span class="sector">🏥 <span data-ar>عيادات ومراكز</span><span data-en>Clinics & centers</span></span>
+      <span class="sector">🏗️ <span data-ar>مقاولات</span><span data-en>Contracting</span></span>
+      <span class="sector">🛍️ <span data-ar>تجارة ومتاجر</span><span data-en>Retail & shops</span></span>
+      <span class="sector">💈 <span data-ar>صالونات وخدمات</span><span data-en>Salons & services</span></span>
+    </div>
 
     <!-- value proposition -->
     <div class="valueprop">
@@ -951,6 +980,39 @@ body:hover #cursor-glow{opacity:1}
           <li class="yes"><span data-ar>SLA واتفاقية مستوى خدمة</span><span data-en>SLA included</span></li>
         </ul>
         <a class="plan-cta" href="mailto:doomyksa@gmail.com?subject=اشتراك%20باقة%20برو&body=السلام%20عليكم،%20أرغب%20بالاشتراك%20في%20باقة%20برو."><span data-ar>تواصل معنا</span><span data-en>Contact us</span></a>
+      </div>
+    </div>
+
+    <!-- OWNERSHIP MODEL -->
+    <div class="own-band">
+      <div class="own-badge">👑 <span data-ar>الأفضل قيمةً على المدى الطويل</span><span data-en>Best long-term value</span></div>
+      <div class="own-grid">
+        <div class="own-main">
+          <div class="own-title"><span data-ar>التملّك الكامل — دفعة واحدة</span><span data-en>Full Ownership — One-Time</span></div>
+          <p class="own-desc">
+            <span data-ar>بدل الاشتراك الشهري للأبد: تدفع <strong>مرة واحدة</strong> فتملك النظام والكود المصدري بالكامل، نركّبه ونرفعه ونعدّ لكم كل شيء وننقل الملكية لكم. بعدها <strong>دعم شهري مخفّض اختياري</strong> فقط (تحديثات + استضافة + إصلاح) — أو نسلّمكم كل شيء وتديرونه بأنفسكم.</span>
+            <span data-en>Instead of paying monthly forever: pay <strong>once</strong> to own the system and full source code. I install it, deploy it, set everything up and transfer ownership to you. After that, only an <strong>optional reduced monthly support</strong> (updates + hosting + fixes) — or take everything and run it yourself.</span>
+          </p>
+          <ul class="own-list">
+            <li><span data-ar>الكود المصدري بالكامل ملكاً لكم</span><span data-en>Complete source code is fully yours</span></li>
+            <li><span data-ar>تركيب + رفع أونلاين + إعداد كل شيء + حساباتكم</span><span data-en>Install + go-live + full setup + your accounts</span></li>
+            <li><span data-ar>تدريب الفريق + توثيق التشغيل</span><span data-en>Team training + operations docs</span></li>
+            <li><span data-ar>دعم شهري مخفّض اختياري بعد التسليم</span><span data-en>Optional reduced monthly support after handover</span></li>
+          </ul>
+        </div>
+        <div class="own-price-col">
+          <div class="own-price-card">
+            <div class="opc-label"><span data-ar>دفعة واحدة — تبدأ من</span><span data-en>One-time — from</span></div>
+            <div class="opc-num">60,000 <span>ر.س</span></div>
+            <div class="opc-sub"><span data-ar>حسب حجم النظام والخدمات (تُحدَّد في العرض الرسمي)</span><span data-en>by system size & services (set in formal quote)</span></div>
+          </div>
+          <div class="own-price-card alt">
+            <div class="opc-label"><span data-ar>+ دعم شهري مخفّض اختياري</span><span data-en>+ Optional monthly support</span></div>
+            <div class="opc-num sm">من 1,500 <span>ر.س/شهر</span></div>
+            <div class="opc-sub"><span data-ar>تحديثات + استضافة + إصلاح أعطال</span><span data-en>updates + hosting + bug fixes</span></div>
+          </div>
+          <a class="plan-cta primary" style="margin-top:4px" href="mailto:doomyksa@gmail.com?subject=طلب%20تملّك%20نظام%20كامل&body=السلام%20عليكم،%20أرغب%20بتملّك%20النظام%20بالكامل%20(دفعة%20واحدة).%0A%0Aاسم%20النشاط:%0Aالقطاع:%0Aعدد%20الموظفين:%0Aالجوال:%0Aالتفاصيل:"><span data-ar>اطلب عرض التملّك</span><span data-en>Request ownership quote</span></a>
+        </div>
       </div>
     </div>
 
@@ -1046,10 +1108,21 @@ body:hover #cursor-glow{opacity:1}
         <li data-ar><b>الدعم:</b> مشمول في الاشتراك · في التملّك يُتفق عليه بعقد صيانة منفصل.</li><li data-en><b>Support:</b> included in subscriptions; in ownership via a separate maintenance contract.</li>
       </ul>
     </details>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         شهادة العمل الحر / توثيق منصة الأعمال — جاهز للإضافة لاحقاً.
+         عند إصدارها، أزِل التعليق واستبدل القيم:
+    <div class="trust-row">
+      <span class="trust-badge">✅ <span data-ar>موثّق — منصة العمل الحر</span><span data-en>Verified — Freelance Platform</span></span>
+      <span class="trust-badge">📄 <span data-ar>وثيقة عمل حر رقم: __________</span><span data-en>Freelance license No: __________</span></span>
+    </div>
+    ════════════════════════════════════════════════════════════════ -->
   </div>
   <div class="divider"></div>
 
   <style>
+  .trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .trust-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);color:var(--green2,#34d399);border-radius:999px;padding:7px 16px;font-size:.82rem;font-weight:700}
   .valueprop{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(16,185,129,.06));border:1px solid var(--border);border-inline-start:4px solid var(--gold,#f59e0b);border-radius:12px;padding:14px 18px;margin-bottom:18px;font-size:.92rem;line-height:1.7;max-width:760px}
   .terms{margin-top:14px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:4px 16px}
   .terms summary{cursor:pointer;font-weight:700;padding:12px 0;font-size:.92rem}
@@ -1121,6 +1194,26 @@ body:hover #cursor-glow{opacity:1}
   .howit-step b{display:block;margin-bottom:3px;font-size:.9rem}
   .howit-step span[data-ar],.howit-step span[data-en]{font-size:.76rem;color:var(--muted);line-height:1.5}
   .howit-n{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--grad1);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+  .sectors{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .sector{display:inline-flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:600;color:var(--text)}
+  .own-band{margin-top:8px;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(16,185,129,.05));border:1px solid rgba(245,158,11,.3);border-radius:18px;padding:24px;position:relative}
+  .own-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--gold,#f59e0b),var(--green,#10b981));color:#fff;font-size:.74rem;font-weight:800;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+  .own-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
+  .own-title{font-size:1.4rem;font-weight:900;margin-bottom:8px}
+  .own-desc{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:14px}
+  .own-desc strong{color:var(--text)}
+  .own-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+  .own-list li{font-size:.85rem;padding-inline-start:26px;position:relative;line-height:1.5}
+  .own-list li::before{content:'✓';position:absolute;inset-inline-start:0;top:0;font-weight:900;color:var(--green2,#34d399)}
+  .own-price-col{display:flex;flex-direction:column;gap:10px}
+  .own-price-card{background:var(--card2);border:1px solid var(--border2);border-radius:14px;padding:16px 18px}
+  .own-price-card.alt{background:rgba(255,255,255,.02)}
+  .opc-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px}
+  .opc-num{font-family:Inter,Tajawal,sans-serif;font-size:1.9rem;font-weight:900;background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
+  .opc-num.sm{font-size:1.3rem}
+  .opc-num span{font-size:.5em;font-weight:600;-webkit-text-fill-color:var(--muted);color:var(--muted)}
+  .opc-sub{font-size:.75rem;color:var(--muted2);margin-top:4px;line-height:1.5}
+  @media(max-width:760px){.own-grid{grid-template-columns:1fr}}
   @media(max-width:760px){.howit{grid-template-columns:1fr 1fr}}
   @media(max-width:760px){.svc-grid{grid-template-columns:1fr}}
   @media(max-width:760px){.plans{grid-template-columns:1fr}.cfg-items{grid-template-columns:1fr}.cfg-layout{grid-template-columns:1fr}}
@@ -1168,7 +1261,14 @@ body:hover #cursor-glow{opacity:1}
       {id:'accounting',ar:'تكامل محاسبي (قيود وفواتير)',en:'Accounting integration',p:1500},
       {id:'crm',ar:'إدارة علاقات العملاء (CRM)',en:'Customer relations (CRM)',p:1800},
       {id:'training',ar:'تدريب الفريق (جلسات)',en:'Team training (sessions)',p:800},
-      {id:'lang',ar:'دعم متعدد اللغات',en:'Multi-language support',p:700}
+      {id:'lang',ar:'دعم متعدد اللغات',en:'Multi-language support',p:700},
+      {id:'workshop',ar:'إدارة ورشة (أوامر تشغيل + فنيين)',en:'Workshop mgmt (job orders + technicians)',p:2000},
+      {id:'parts',ar:'مخزون قطع غيار + باركود',en:'Spare-parts inventory + barcode',p:1800},
+      {id:'estimates',ar:'عروض أسعار وفواتير صيانة',en:'Repair quotes & service invoices',p:1200},
+      {id:'svchistory',ar:'سجل صيانة لكل مركبة/عميل',en:'Per-vehicle / customer service history',p:1000},
+      {id:'clinic',ar:'حجوزات عيادة + ملفات مرضى',en:'Clinic bookings + patient files',p:2000},
+      {id:'menu',ar:'إدارة مطعم (قوائم + طاولات + طلبات)',en:'Restaurant (menus + tables + orders)',p:1800},
+      {id:'loyalty',ar:'برنامج ولاء ونقاط للعملاء',en:'Customer loyalty & points',p:900}
     ];
     var cart={};
     function isEn(){return document.body.classList.contains('en');}
@@ -1298,12 +1398,17 @@ console.log('%c🔒 Ahmed Alqahtani Portfolio','color:#3b82f6;font-size:18px;fon
 console.log('%cDesigned & Built by Ahmed Sultan Alqahtani © 2026','color:#10b981;font-size:12px');
 console.log('%chttps://cybphantom.github.io','color:#8b5cf6;font-size:11px');
 
-/* ── SCROLL PROGRESS BAR ── */
+/* ── SCROLL PROGRESS BAR + FLOATING SALES BUTTON ── */
 const pb=document.getElementById('progress-bar');
+const fab=document.getElementById('fab-sales');
+const offerSec=document.getElementById('offer');
 window.addEventListener('scroll',()=>{
   const doc=document.documentElement;
   pb.style.transform=`scaleX(${doc.scrollTop/(doc.scrollHeight-doc.clientHeight)})`;
   document.getElementById('nav').classList.toggle('scrolled',scrollY>40);
+  // أظهر الزر بعد تجاوز البطل، وأخفه عند الوصول لقسم البيع نفسه
+  const offerTop=offerSec?offerSec.getBoundingClientRect().top:99999;
+  fab.classList.toggle('show', scrollY>600 && offerTop>300);
 },{passive:true});
 
 /* ── CURSOR GLOW ── */
