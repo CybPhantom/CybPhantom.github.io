@@ -215,9 +215,22 @@ footer a:hover{color:var(--accent2)}
 /* VALUE CARDS */
 .value-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
 @media(max-width:640px){.value-cards{grid-template-columns:1fr}}
-.value-card{border-radius:var(--radius2);padding:24px;position:relative;overflow:hidden}
+.value-card{border-radius:var(--radius2);padding:24px;position:relative;overflow:hidden;
+  backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
 .value-card.build{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.25)}
 .value-card.annual{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.25)}
+.value-card:hover{transform:translateY(-4px) scale(1.01)}
+.value-card.build:hover{border-color:rgba(59,130,246,.5);box-shadow:0 16px 48px rgba(59,130,246,.2)}
+.value-card.annual:hover{border-color:rgba(16,185,129,.5);box-shadow:0 16px 48px rgba(16,185,129,.18)}
+.value-card::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.07),transparent);
+  transition:left .6s ease;pointer-events:none;z-index:2}
+.value-card:hover::after{left:160%}
+.value-breakdown-grid{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.vb-row{cursor:default}
+.vb-row:hover{transform:translateX(-3px)}
+body.en .vb-row:hover{transform:translateX(3px)}
 .value-card::before{content:'';position:absolute;top:0;inset-inline:0;height:3px}
 .value-card.build::before{background:linear-gradient(90deg,var(--accent),var(--purple))}
 .value-card.annual::before{background:linear-gradient(90deg,var(--green),var(--accent))}
@@ -664,18 +677,18 @@ body:hover #cursor-glow{opacity:1}
         <!-- CARD 1: one-time build -->
         <div class="value-card build">
           <div class="vc-label"><span data-ar>تكلفة البناء — مرة واحدة</span><span data-en>Build Cost — One Time</span></div>
-          <div class="vc-amount">240k – 470k <span style="font-size:.5em;font-weight:600">ر.س</span></div>
+          <div class="vc-amount">160k – 320k <span style="font-size:.5em;font-weight:600">ر.س</span></div>
           <div class="vc-desc">
-            <span data-ar>لو استأجرت شركة برمجة سعودية لبناء هذا النظام من الصفر</span>
-            <span data-en>What a Saudi software company would charge to build this from scratch</span>
+            <span data-ar>لو استأجرت شركة برمجة سعودية لبناء هذا النظام من الصفر (تقدير محافظ بأسعار السوق المحلي 2025–2026)</span>
+            <span data-en>What a Saudi software company would charge to build this from scratch (conservative, at local 2025–2026 rates)</span>
           </div>
           <div class="vc-note">
             <div style="display:flex;flex-direction:column;gap:4px">
-              <span style="display:flex;justify-content:space-between"><span data-ar>ERP أساسي</span><span data-en>Core ERP</span><span style="font-family:Inter;color:var(--text)">80k–150k</span></span>
-              <span style="display:flex;justify-content:space-between"><span data-ar>ربط الأنظمة الحكومية</span><span data-en>Government Systems APIs</span><span style="font-family:Inter;color:var(--text)">40k–80k</span></span>
-              <span style="display:flex;justify-content:space-between"><span data-ar>مساعد ذكاء اصطناعي عربي</span><span data-en>Arabic AI Assistant</span><span style="font-family:Inter;color:var(--text)">30k–60k</span></span>
-              <span style="display:flex;justify-content:space-between"><span data-ar>خريطة GPS حية</span><span data-en>Live GPS Map</span><span style="font-family:Inter;color:var(--text)">20k–40k</span></span>
-              <span style="display:flex;justify-content:space-between"><span data-ar>أمان + PWA + تقارير + باقي</span><span data-en>Security + PWA + Reports + rest</span><span style="font-family:Inter;color:var(--text)">70k–140k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>ERP أساسي متعدد الوحدات</span><span data-en>Core multi-module ERP</span><span style="font-family:Inter;color:var(--text)">60k–120k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>ربط الأنظمة الحكومية</span><span data-en>Government Systems APIs</span><span style="font-family:Inter;color:var(--text)">25k–50k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>مساعد ذكاء اصطناعي عربي</span><span data-en>Arabic AI Assistant</span><span style="font-family:Inter;color:var(--text)">20k–40k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>خريطة GPS حية</span><span data-en>Live GPS Map</span><span style="font-family:Inter;color:var(--text)">15k–30k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>أمان + PWA + تقارير + باقي</span><span data-en>Security + PWA + Reports + rest</span><span style="font-family:Inter;color:var(--text)">40k–80k</span></span>
             </div>
           </div>
         </div>
@@ -683,16 +696,16 @@ body:hover #cursor-glow{opacity:1}
         <!-- CARD 2: annual savings -->
         <div class="value-card annual">
           <div class="vc-label"><span data-ar>التوفير السنوي المستمر</span><span data-en>Ongoing Annual Savings</span></div>
-          <div class="vc-amount">65k – 225k <span style="font-size:.5em;font-weight:600">ر.س/سنة</span></div>
+          <div class="vc-amount">50k – 180k <span style="font-size:.5em;font-weight:600">ر.س/سنة</span></div>
           <div class="vc-desc">
-            <span data-ar>ما توفّره الشركة كل سنة مقارنةً باشتراكات الأنظمة الجاهزة + الدعم الخارجي</span>
-            <span data-en>What the company saves every year vs. off-the-shelf subscriptions + external support</span>
+            <span data-ar>ما توفّره الشركة كل سنة مقارنةً باشتراكات الأنظمة الجاهزة + الصيانة + الدعم الخارجي</span>
+            <span data-en>What the company saves every year vs. off-the-shelf subscriptions + maintenance + external support</span>
           </div>
           <div class="vc-note">
             <div style="display:flex;flex-direction:column;gap:4px">
-              <span style="display:flex;justify-content:space-between"><span data-ar>اشتراك ERP جاهز (SAP/Odoo)</span><span data-en>ERP subscription (SAP/Odoo)</span><span style="font-family:Inter;color:var(--text)">30k–120k</span></span>
-              <span style="display:flex;justify-content:space-between"><span data-ar>صيانة وتطوير مستمر</span><span data-en>Maintenance & development</span><span style="font-family:Inter;color:var(--text)">20k–60k</span></span>
-              <span style="display:flex;justify-content:space-between"><span data-ar>ربط حكومي (خدمة خارجية)</span><span data-en>Gov integration (external)</span><span style="font-family:Inter;color:var(--text)">10k–30k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>اشتراك ERP جاهز (حسب المستخدمين)</span><span data-en>ERP subscription (per users)</span><span style="font-family:Inter;color:var(--text)">20k–80k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>صيانة وتطوير (10–30% سنوياً)</span><span data-en>Maintenance & dev (10–30%/yr)</span><span style="font-family:Inter;color:var(--text)">18k–60k</span></span>
+              <span style="display:flex;justify-content:space-between"><span data-ar>ربط حكومي (خدمة خارجية)</span><span data-en>Gov integration (external)</span><span style="font-family:Inter;color:var(--text)">8k–25k</span></span>
               <span style="display:flex;justify-content:space-between"><span data-ar>استضافة مُدارة + دعم فني</span><span data-en>Managed hosting + support</span><span style="font-family:Inter;color:var(--text)">5k–15k</span></span>
             </div>
           </div>
@@ -772,7 +785,7 @@ body:hover #cursor-glow{opacity:1}
       <div class="tl-dot active"></div>
       <div class="tl-card">
         <div class="tl-role"><span data-ar>مشرف عمليات الأسطول والصيانة + مطوّر ERP</span><span data-en>Fleet Operations Supervisor + ERP Developer</span></div>
-        <div class="tl-company"><span data-ar>شركة زاد الشرقية للخدمات اللوجستية</span><span data-en>Eastern Zad Logistics Company</span></div>
+        <div class="tl-company"><span data-ar>شركة لوجستية سعودية — سلسلة تبريد وتوزيع</span><span data-en>Saudi Logistics Company — Cold Chain & Distribution</span></div>
         <div class="tl-period">2026 – <span data-ar>حتى الآن</span><span data-en>Present</span></div>
         <ul class="tl-bullets">
           <li data-ar>بناء منصة ERP كاملة (130+ تحديثاً موثّقاً) بالتوازي مع الإشراف اليومي على الأسطول وسلسلة التبريد</li>
@@ -845,8 +858,8 @@ body:hover #cursor-glow{opacity:1}
   <div class="proj-grid">
     <div class="proj-card reveal reveal-delay-1">
       <div class="proj-icon gold">🏢</div>
-      <div class="proj-name"><span data-ar>زاد الشرقية — ERP</span><span data-en>Eastern Zad — ERP v14</span></div>
-      <div class="proj-desc"><span data-ar>منصة تشغيل لوجستية كاملة — الأسطول، HR، مالية، ثلاجات، تم، سارب، PWA. إنتاج حي · الرابط محجوب · عرض في المقابلة.</span><span data-en>Full logistics ops platform — fleet, HR, finance, freezers, Tamm, GPS. Live production · URL withheld · demo on interview.</span></div>
+      <div class="proj-name"><span data-ar>منصة ERP لوجستية متكاملة</span><span data-en>Integrated Logistics ERP</span></div>
+      <div class="proj-desc"><span data-ar>منصة تشغيل كاملة — الأسطول، الموارد البشرية، المالية، سلسلة التبريد، الخرائط الحية، ربط الأنظمة الحكومية، PWA. نظام إنتاجي حي · عرض تجريبي متاح عند الطلب.</span><span data-en>Full operations platform — fleet, HR, finance, cold-chain, live maps, government integration, PWA. Live production system · demo available on request.</span></div>
     </div>
     <div class="proj-card reveal reveal-delay-2">
       <div class="proj-icon blue">🤖</div>
@@ -883,7 +896,9 @@ body:hover #cursor-glow{opacity:1}
     <div class="edu-card reveal reveal-delay-3"><div class="edu-deg">CEH v13</div><div class="edu-inst">Certified Ethical Hacker</div></div>
     <div class="edu-card reveal reveal-delay-4"><div class="edu-deg">Linux Professional</div><div class="edu-inst">Canonical — 2026</div></div>
     <div class="edu-card reveal reveal-delay-1"><div class="edu-deg">MCSA</div><div class="edu-inst">Microsoft — 2026</div></div>
-    <div class="edu-card reveal reveal-delay-2"><div class="edu-deg"><span data-ar>شهادات STCW البحرية</span><span data-en>STCW Marine Certificates</span></div><div class="edu-inst"><span data-ar>اعتمادات دولية</span><span data-en>International Accreditation</span></div></div>
+    <div class="edu-card reveal reveal-delay-2"><div class="edu-deg"><span data-ar>تطوير وتصميم واجهات الويب</span><span data-en>Responsive Web Design</span></div><div class="edu-inst">freeCodeCamp <span data-ar>· تدريب ذاتي</span><span data-en>· Self-paced</span></div></div>
+    <div class="edu-card reveal reveal-delay-3"><div class="edu-deg"><span data-ar>أساسيات تطوير وتصميم المواقع</span><span data-en>Web Development Foundations</span></div><div class="edu-inst"><span data-ar>دروب — المنصة الوطنية</span><span data-en>Doroob — National Platform</span></div></div>
+    <div class="edu-card reveal reveal-delay-4"><div class="edu-deg"><span data-ar>شهادات STCW البحرية</span><span data-en>STCW Marine Certificates</span></div><div class="edu-inst"><span data-ar>اعتمادات دولية</span><span data-en>International Accreditation</span></div></div>
   </div>
   <div class="divider"></div>
 </section>
