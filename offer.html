@@ -625,6 +625,11 @@ body:hover #cursor-glow{opacity:1}
     </div>
 
     <!-- PLANS -->
+    <p class="plans-note">
+      <span data-ar>💡 كل باقة تشمل <b>عدداً من الخدمات تختارها بنفسك</b> من قائمة الخدمات أدناه حسب نشاطك (بقالة، ورشة، قطع غيار، مطعم، عيادة…). الباقة تحدّد المستوى وعدد الخدمات، وأنت تختار أيّها يناسبك.</span>
+      <span data-en>💡 Each plan includes <b>a number of services you pick yourself</b> from the list below, tailored to your business (grocery, workshop, spare parts, restaurant, clinic…). The plan sets the tier and how many services; you choose which.</span>
+    </p>
+
     <div class="plans">
       <!-- LITE -->
       <div class="plan" data-m="5000" data-a="50000">
@@ -632,12 +637,12 @@ body:hover #cursor-glow{opacity:1}
         <div class="plan-tag"><span data-ar>للشركات المبتدئة</span><span data-en>For startups</span></div>
         <div class="plan-price"><span class="price-orig"></span><span class="price-num"></span> <span class="price-suf"><span data-ar>ر.س</span><span data-en>SAR</span><span class="per"></span></span></div>
         <ul class="plan-feats">
-          <li class="yes"><span data-ar>إدارة الموظفين والإقامات</span><span data-en>HR & residence management</span></li>
-          <li class="yes"><span data-ar>إدارة الأسطول والمركبات</span><span data-en>Fleet & vehicles</span></li>
-          <li class="yes"><span data-ar>المالية والوقود والتقارير</span><span data-en>Finance, fuel & reports</span></li>
+          <li class="yes quota"><span data-ar>🧩 تختار حتى <b>4</b> خدمات من القائمة</span><span data-en>🧩 Pick up to <b>4</b> services</span></li>
+          <li class="yes"><span data-ar>إدارة العمليات والأصول (مركبات/معدات/مخزون حسب نشاطك)</span><span data-en>Operations & assets (vehicles/equipment/stock per your business)</span></li>
+          <li class="yes"><span data-ar>إدارة الموظفين والمستندات</span><span data-en>Staff & documents management</span></li>
+          <li class="yes"><span data-ar>المالية والفواتير والتقارير الأساسية</span><span data-en>Finance, invoices & basic reports</span></li>
           <li class="yes"><span data-ar>صلاحيات وأمان أساسي + نسخ احتياطي</span><span data-en>Roles, base security + backups</span></li>
           <li class="yes"><span data-ar>استضافة وتحديثات ودعم</span><span data-en>Hosting, updates & support</span></li>
-          <li class="no"><span data-ar>المبيعات والخرائط الجغرافية</span><span data-en>Sales & geo maps</span></li>
           <li class="no"><span data-ar>ربط الأنظمة الحكومية</span><span data-en>Government integration</span></li>
           <li class="no"><span data-ar>مساعد ذكاء اصطناعي</span><span data-en>AI assistant</span></li>
         </ul>
@@ -651,12 +656,12 @@ body:hover #cursor-glow{opacity:1}
         <div class="plan-tag"><span data-ar>للشركات النامية</span><span data-en>For growing companies</span></div>
         <div class="plan-price"><span class="price-orig"></span><span class="price-num"></span> <span class="price-suf"><span data-ar>ر.س</span><span data-en>SAR</span><span class="per"></span></span></div>
         <ul class="plan-feats">
+          <li class="yes quota"><span data-ar>🧩 تختار حتى <b>10</b> خدمات من القائمة</span><span data-en>🧩 Pick up to <b>10</b> services</span></li>
           <li class="yes"><span data-ar>كل مزايا «لايت» +</span><span data-en>Everything in Lite +</span></li>
-          <li class="yes"><span data-ar>المبيعات والتوزيع والخرائط</span><span data-en>Sales, distribution & maps</span></li>
+          <li class="yes"><span data-ar>المبيعات والعملاء والخرائط الجغرافية</span><span data-en>Sales, customers & geo maps</span></li>
           <li class="yes"><span data-ar>ربط الأنظمة الحكومية الرسمية</span><span data-en>Official government integration</span></li>
           <li class="yes"><span data-ar>أمان متقدم + تشفير + سجل تدقيق</span><span data-en>Advanced security + encryption + audit log</span></li>
-          <li class="yes"><span data-ar>تنبيهات ذكية موحّدة لكل الأقسام</span><span data-en>Unified smart alerts</span></li>
-          <li class="yes"><span data-ar>تقارير تنفيذية وتخصيص إضافي</span><span data-en>Executive reports & customization</span></li>
+          <li class="yes"><span data-ar>تنبيهات ذكية موحّدة + تقارير تنفيذية</span><span data-en>Unified smart alerts + executive reports</span></li>
           <li class="no"><span data-ar>مساعد ذكاء اصطناعي عربي</span><span data-en>Arabic AI assistant</span></li>
           <li class="no"><span data-ar>الابتكارات الذكية الحصرية</span><span data-en>Exclusive smart innovations</span></li>
         </ul>
@@ -669,12 +674,12 @@ body:hover #cursor-glow{opacity:1}
         <div class="plan-tag"><span data-ar>للمؤسسات الكبيرة</span><span data-en>For enterprises</span></div>
         <div class="plan-price"><span class="price-orig"></span><span class="price-num"></span> <span class="price-suf"><span data-ar>ر.س</span><span data-en>SAR</span><span class="per"></span></span></div>
         <ul class="plan-feats">
+          <li class="yes quota"><span data-ar>🧩 <b>كل الخدمات</b> من القائمة — بلا حدود</span><span data-en>🧩 <b>All services</b> — unlimited</span></li>
           <li class="yes"><span data-ar>كل مزايا «بلس» +</span><span data-en>Everything in Plus +</span></li>
           <li class="yes"><span data-ar>مساعد ذكاء اصطناعي عربي مدمج</span><span data-en>Embedded Arabic AI assistant</span></li>
           <li class="yes"><span data-ar>ابتكارات ذكية حصرية (أنظمة قرار وتشغيل)</span><span data-en>Exclusive smart innovations (decision & ops engines)</span></li>
-          <li class="yes"><span data-ar>متعدد الشركات (multi-company)</span><span data-en>Multi-company support</span></li>
-          <li class="yes"><span data-ar>دعم أولوية + تطوير مخصّص</span><span data-en>Priority support + custom dev</span></li>
-          <li class="yes"><span data-ar>تدريب فريق العمل</span><span data-en>Team training</span></li>
+          <li class="yes"><span data-ar>متعدد الفروع والشركات (multi-company)</span><span data-en>Multi-branch & company</span></li>
+          <li class="yes"><span data-ar>دعم أولوية + تطوير مخصّص + تدريب</span><span data-en>Priority support + custom dev + training</span></li>
           <li class="yes"><span data-ar>تقارير وتحليلات متقدمة</span><span data-en>Advanced analytics</span></li>
           <li class="yes"><span data-ar>SLA واتفاقية مستوى خدمة</span><span data-en>SLA included</span></li>
         </ul>
@@ -833,6 +838,8 @@ body:hover #cursor-glow{opacity:1}
   .bill-toggle button{background:transparent;border:0;color:var(--muted);padding:9px 22px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:700;font-size:.9rem;transition:all .2s}
   .bill-toggle button.active{background:var(--grad1);color:#fff}
   .bill-toggle em{font-style:normal;font-size:.68rem;opacity:.85;margin-inline-start:4px}
+  .plans-note{max-width:760px;margin:0 0 18px;font-size:.86rem;line-height:1.7;color:var(--muted);background:rgba(59,130,246,.06);border:1px solid var(--border);border-inline-start:4px solid var(--accent);border-radius:12px;padding:12px 16px}
+  .plans-note b{color:var(--text)}
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .plan{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;position:relative;transition:transform .2s,border-color .2s}
   .plan:hover{transform:translateY(-4px);border-color:var(--accent)}
@@ -850,6 +857,9 @@ body:hover #cursor-glow{opacity:1}
   .plan-feats li.yes::before{content:'✓';color:var(--accent)}
   .plan-feats li.no{color:var(--muted2)}
   .plan-feats li.no::before{content:'✕';color:var(--muted2)}
+  .plan-feats li.quota{font-weight:800;color:var(--text);background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:9px;padding:8px 10px;margin-bottom:6px}
+  .plan-feats li.quota::before{content:''}
+  .plan-feats li.quota b{font-family:Inter,Tajawal,sans-serif;color:var(--gold2,#fbbf24)}
   .plan-cta{display:block;text-align:center;padding:11px;border-radius:10px;border:1px solid var(--accent);color:var(--accent2);text-decoration:none;font-weight:700;font-size:.9rem;transition:all .2s}
   .plan-cta:hover{background:rgba(59,130,246,.1)}
   .plan-cta.primary{background:var(--grad1);color:#fff;border:0}
@@ -1189,6 +1199,19 @@ function toggleEarly(){
   c.style.display=open?'block':'none';
   a.style.transform=open?'rotate(180deg)':'rotate(0deg)';
 }
+
+/* ── ENGLISH ENTRY (قادم من en.html) ── */
+(function(){
+  var isEn = location.hash.toLowerCase().indexOf('en') > -1 || /[?&]lang=en/i.test(location.search);
+  if(!isEn) return;
+  document.body.classList.add('en');
+  document.documentElement.lang='en';
+  document.documentElement.dir='ltr';
+  // اجعل روابط العودة للمعرض تذهب للنسخة الإنجليزية
+  document.querySelectorAll('a.page-turn[href^="index.html"]').forEach(function(a){
+    a.setAttribute('href', a.getAttribute('href').replace('index.html','en.html'));
+  });
+})();
 
 /* ── PAGE-TURN / FOLD TRANSITION ── */
 (function(){
