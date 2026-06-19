@@ -61,7 +61,7 @@ body.en .nav-links a::after{transform-origin:left}
 .nav-links a:hover{color:var(--text)}
 .nav-links a:hover::after{transform:scaleX(1)}
 .lang-btn{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);color:var(--accent2);
-  padding:6px 16px;border-radius:8px;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s;white-space:nowrap}
+  min-height:36px;padding:6px 16px;border-radius:8px;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s;white-space:nowrap}
 .lang-btn:hover{background:rgba(59,130,246,.2);border-color:var(--accent)}
 
 /* HERO */
@@ -263,7 +263,7 @@ body.en [data-ar]{display:none}
 body.en [data-en]{display:revert}
 
 @media(max-width:768px){
-  nav{padding:0 12px;gap:8px}.nav-logo{font-size:.92rem}.menu-btn{display:inline-flex!important}
+  nav{padding:0 12px;gap:8px}.nav-logo{display:none}.menu-btn{display:inline-flex!important}
   .nav-links{display:none;position:absolute;top:64px;inset-inline:12px;padding:12px;background:rgba(22,14,7,.98);border:1px solid var(--border2);border-radius:12px;box-shadow:0 16px 40px rgba(0,0,0,.45);flex-direction:column;gap:0}
   .nav-links.open{display:flex}.nav-links li{width:100%}.nav-links a{display:block;padding:10px 12px;border-radius:8px}.nav-links a:hover{background:rgba(255,255,255,.05)}
   .theme-btn{padding:0 9px}.lang-btn{padding:6px 9px}
@@ -271,6 +271,7 @@ body.en [data-en]{display:revert}
   .flagship{padding:22px}.feat-grid{grid-template-columns:1fr}
   .section{padding:64px 16px}.contact-box{padding:28px 18px}
   .timeline{padding-inline-start:22px}.timeline::before{inset-inline-start:5px}.tl-dot{inset-inline-start:-22px}
+  footer a{display:inline-flex;align-items:center;min-height:36px;padding:6px 4px}
 }
 
 /* ============ SCROLL PROGRESS BAR ============ */
@@ -422,7 +423,7 @@ body:hover #cursor-glow{opacity:1}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .js .reveal{opacity:1!important;transform:none!important}
 }
-@media(max-width:360px){.theme-btn-label{display:none}.nav-logo{font-size:.82rem}.menu-btn{font-size:.75rem;padding:0 8px}}
+@media(max-width:360px){.theme-btn-label{display:none}.menu-btn{font-size:.75rem;padding:0 8px}}
 
 /* ============================================================
    PRINT / PDF STYLES
