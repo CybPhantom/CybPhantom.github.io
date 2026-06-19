@@ -8,6 +8,8 @@
 <meta name="author" content="Ahmed Sultan Al-Qahtani (CybPhantom / c0d319)">
 <meta name="copyright" content="© 2026 Ahmed Sultan Al-Qahtani — All rights reserved">
 <meta name="theme-color" content="#0d0905">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta property="og:type" content="profile">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Ahmed Alqahtani — Full-Stack & ERP Developer">
@@ -17,6 +19,7 @@
 <link rel="canonical" href="https://cybphantom.github.io/en.html">
 <link rel="alternate" hreflang="ar" href="https://cybphantom.github.io/">
 <link rel="alternate" hreflang="en" href="https://cybphantom.github.io/en.html">
+<link rel="alternate" hreflang="x-default" href="https://cybphantom.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
@@ -209,7 +212,17 @@ body.en .tl-card:hover{transform:translateX(4px)}
 .contact-link:hover{background:rgba(59,130,246,.1);border-color:var(--accent);color:var(--accent2)}
 .contact-link svg{width:15px;height:15px;fill:currentColor;flex-shrink:0}
 
-footer{text-align:center;color:var(--muted2);padding:40px 24px;font-size:.82rem;border-top:1px solid var(--border);position:relative;z-index:1}
+/* SANITIZED PRODUCT CONCEPTS */
+.concept-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:28px}
+.concept-card{margin:0;background:var(--card2);border:1px solid var(--border2);border-radius:16px;overflow:hidden;transition:transform .2s,border-color .2s}
+.concept-card:first-child{grid-column:1/-1}
+.concept-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.concept-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--bg2)}
+.concept-card figcaption{padding:14px 16px;color:var(--muted);font-size:.82rem;line-height:1.65}
+.concept-card figcaption strong{display:block;color:var(--text);font-size:.93rem;margin-bottom:3px}
+@media(max-width:700px){.concept-gallery{grid-template-columns:1fr}.concept-card:first-child{grid-column:auto}}
+
+footer{text-align:center;color:var(--muted);padding:40px 24px;font-size:.82rem;border-top:1px solid var(--border);position:relative;z-index:1}
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--accent2)}
 
@@ -565,10 +578,11 @@ body:hover #cursor-glow{opacity:1}
         <button type="button" class="theme-opt" data-t="light" onclick="setTheme('light')"><span class="theme-dot" style="background:linear-gradient(135deg,#1d4ed8,#059669)"></span><span data-ar>فاتح</span><span data-en>Light</span></button>
       </div>
     </div>
-    <button class="lang-btn" onclick="toggleLang()"><span data-ar>English</span><span data-en>العربية</span></button>
+    <button class="lang-btn" type="button" onclick="toggleLang()"><span data-ar>English</span><span data-en>العربية</span></button>
   </div>
 </nav>
 
+<main>
 <section id="about">
 <div id="hero">
   <canvas id="particles-canvas"></canvas>
@@ -607,8 +621,8 @@ body:hover #cursor-glow{opacity:1}
       </a>
     </div>
     <div class="stats-band">
-      <div class="stat-item"><div class="stat-num" data-count="11">0</div><div class="stat-lbl"><span data-ar>سنة في العمليات+</span><span data-en>Years in Operations+</span></div></div>
-      <div class="stat-item"><div class="stat-num" data-count="130">0</div><div class="stat-lbl"><span data-ar>تحديث موثّق+</span><span data-en>Documented Updates+</span></div></div>
+      <div class="stat-item"><div class="stat-num" data-count="11">0</div><div class="stat-lbl"><span data-ar>+11 سنة في العمليات</span><span data-en>11+ Years in Operations</span></div></div>
+      <div class="stat-item"><div class="stat-num" data-count="130">0</div><div class="stat-lbl"><span data-ar>+130 تحديثاً موثقاً</span><span data-en>130+ Documented Updates</span></div></div>
       <div class="stat-item"><div class="stat-num" data-count="14">0</div><div class="stat-lbl"><span data-ar>وحدات مدمجة</span><span data-en>Integrated Modules</span></div></div>
       <div class="stat-item"><div class="stat-num">5.00</div><div class="stat-lbl"><span data-ar>معدل الدبلوم / 5</span><span data-en>Diploma GPA / 5</span></div></div>
     </div>
@@ -631,7 +645,7 @@ body:hover #cursor-glow{opacity:1}
           <span data-en>Built solo end-to-end — design, development, integration, deployment & live operations · Production system in daily active use · <strong>130+ documented updates & releases</strong></span>
         </div>
       </div>
-      <div class="confidential-badge">🎬 <span data-ar>عرض تجريبي (ديمو) متاح عند الطلب — قريباً</span><span data-en>Live Demo available on request — coming soon</span></div>
+      <div class="confidential-badge">🎬 <span data-ar>عرض آمن ببيانات تجريبية</span><span data-en>Sanitized demo with fictional data</span></div>
     </div>
 
     <div class="feat-grid">
@@ -677,7 +691,7 @@ body:hover #cursor-glow{opacity:1}
       </div>
       <div class="feat-card purple reveal reveal-delay-4">
         <div class="feat-icon">📋</div>
-        <div class="feat-title"><span data-ar>workflow اعتماد الفواتير</span><span data-en>Invoice Approval Workflow</span></div>
+        <div class="feat-title"><span data-ar>مسار اعتماد الفواتير</span><span data-en>Invoice Approval Workflow</span></div>
         <div class="feat-desc"><span data-ar>دورة عمل كاملة: الأقسام تُنشئ فواتير بصور → تنبيه المالية → اعتماد/رفض → تنبيه المُرسِل + حالات متعددة (معتمدة/مصروفة/محوّلة)</span><span data-en>Full workflow: departments create photo-invoices → finance notified → approve/reject → sender notified + multi-status tracking</span></div>
       </div>
       <div class="feat-card purple reveal reveal-delay-2">
@@ -698,13 +712,28 @@ body:hover #cursor-glow{opacity:1}
       <div class="feat-card green reveal reveal-delay-3">
         <div class="feat-icon">☁️</div>
         <div class="feat-title"><span data-ar>نشر سحابي + صيانة مجدولة</span><span data-en>Cloud Deploy + Scheduled Maintenance</span></div>
-        <div class="feat-desc"><span data-ar>SQLite + Node.js + SSL + GitHub→Render CD + وضع صيانة مجدول أسبوعياً + عداد تنازلي + إشعار للمستخدمين + جاهز للنقل السعودي</span><span data-en>SQLite + Node.js + SSL + GitHub→Render CD + weekly scheduled maintenance mode + live countdown + user alerts + Saudi hosting ready</span></div>
+        <div class="feat-desc"><span data-ar>SQLite + Node.js + SSL + GitHub→Render CD + وضع صيانة مجدول أسبوعياً + عداد تنازلي + إشعار للمستخدمين + جاهز للاستضافة داخل السعودية</span><span data-en>SQLite + Node.js + SSL + GitHub→Render CD + weekly scheduled maintenance mode + live countdown + user alerts + ready for Saudi-region hosting</span></div>
       </div>
       <div class="feat-card gold reveal reveal-delay-4">
         <div class="feat-icon">🛡️</div>
         <div class="feat-title"><span data-ar>مبادئ PDPL + أمان الكود</span><span data-en>PDPL-Aligned Design + Code Security</span></div>
         <div class="feat-desc"><span data-ar>تطبيق مبادئ تقليل البيانات والخصوصية حسب التصميم، مع فحوص Gitleaks وSemgrep وDependabot وسياسة CSP</span><span data-en>Data minimization and privacy-by-design practices, supported by Gitleaks, Semgrep, Dependabot, and CSP checks</span></div>
       </div>
+    </div>
+
+    <div class="concept-gallery" role="region" aria-label="Sanitized interface concepts">
+      <figure class="concept-card reveal">
+        <img src="assets/erp-dashboard-demo.png" width="1672" height="942" loading="lazy" decoding="async" alt="Fictional logistics and operations dashboard concept using aggregate demo data">
+        <figcaption><strong><span data-ar>منصة عمليات ولوجستيات</span><span data-en>Logistics Operations Platform</span></strong><span data-ar>تصور واجهة آمن مستوحى من قدرات المنصة؛ ليس لقطة من نظام الإنتاج ولا يحتوي بيانات عملاء أو موظفين حقيقية.</span><span data-en>A sanitized interface concept inspired by the platform capabilities; not a production screenshot and contains no real customer or employee data.</span></figcaption>
+      </figure>
+      <figure class="concept-card reveal">
+        <img src="assets/clinic-platform-concept.png" width="1672" height="942" loading="lazy" decoding="async" alt="Fictional clinic or hospital operations platform concept without patient or employee data">
+        <figcaption><strong><span data-ar>منصة تشغيل عيادة أو مستشفى</span><span data-en>Clinic or Hospital Operations</span></strong><span data-ar>نموذج تصوري ببيانات تشغيلية مجمعة ووهمية، دون أي سجلات مرضى أو موظفين أو معلومات طبية حقيقية.</span><span data-en>A conceptual mockup using fictional aggregate operations data, with no real patient, employee, or medical records.</span></figcaption>
+      </figure>
+      <figure class="concept-card reveal">
+        <img src="assets/workshop-spare-parts-concept.png" width="1672" height="942" loading="lazy" decoding="async" alt="Fictional spare-parts procurement platform for workshops using demo data">
+        <figcaption><strong><span data-ar>منصة قطع غيار للورش</span><span data-en>Workshop Spare-Parts Platform</span></strong><span data-ar>كتالوج وطلبات شراء ومقارنة عروض ومخزون وتوافق مركبات، بأسماء وأسعار وأرقام أصناف تجريبية بالكامل.</span><span data-en>Catalog, purchase requests, quote comparison, stock, and vehicle compatibility using entirely fictional names, prices, and part numbers.</span></figcaption>
+      </figure>
     </div>
 
   </div>
@@ -784,8 +813,8 @@ body:hover #cursor-glow{opacity:1}
           <li data-en>Built embedded Arabic AI assistant (Claude API + tool-use) and live GPS map with MapLibre GL</li>
           <li data-ar>ربط الأنظمة الحكومية الرسمية والأنظمة المحاسبية وتتبع GPS عبر القنوات المعتمدة</li>
           <li data-en>Integrated official government systems, accounting systems, and GPS tracking via approved channels</li>
-          <li data-ar>تدقيق ومعالجة آلاف الفواتير (وقود وخدمات وصيانة) بدقة ربط 100% بالمركبات</li>
-          <li data-en>Audited & processed thousands of invoices (fuel, services, maintenance) with 100% vehicle-linking accuracy</li>
+          <li data-ar>تدقيق ومعالجة آلاف الفواتير (وقود وخدمات وصيانة) مع التحقق من ربطها بالمركبات</li>
+          <li data-en>Audited and processed thousands of invoices (fuel, services, maintenance) with vehicle-link validation</li>
           <li data-ar>نظام توقيع ملكية رقمي موحّد (HMAC-SHA256) + تجهيز تسجيل SAIP لحقوق المؤلف</li>
           <li data-en>Unified cryptographic ownership seal (HMAC-SHA256) + SAIP copyright registration prep</li>
         </ul>
@@ -808,17 +837,17 @@ body:hover #cursor-glow{opacity:1}
     <div class="tl-item reveal reveal-delay-3">
       <div class="tl-dot" style="border-color:var(--muted2);background:var(--bg)"></div>
       <div class="tl-card" style="border-color:var(--border);opacity:.85">
-        <button onclick="toggleEarly()" style="all:unset;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px">
-          <div>
-            <div class="tl-role" style="color:var(--muted)">
+        <button type="button" onclick="toggleEarly()" aria-controls="early-content" aria-expanded="false" style="all:unset;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span>
+            <span class="tl-role" style="color:var(--muted);display:block">
               <span data-ar>خبرات سابقة — قبل 2014</span>
               <span data-en>Earlier Experience — Before 2014</span>
-            </div>
-            <div class="tl-company" style="color:var(--muted2);font-size:.82rem">
+            </span>
+            <span class="tl-company" style="color:var(--muted2);font-size:.82rem;display:block">
               <span data-ar>تخليص جمركي · إدخال بيانات · خدمة عملاء · 2011 – 2014</span>
               <span data-en>Customs Clearance · Data Entry · Customer Service · 2011 – 2014</span>
-            </div>
-          </div>
+            </span>
+          </span>
           <span id="early-arrow" style="color:var(--muted);font-size:1rem;transition:transform .3s;flex-shrink:0">▼</span>
         </button>
         <div id="early-content" style="display:none;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
@@ -882,7 +911,7 @@ body:hover #cursor-glow{opacity:1}
         <span style="font-size:1.4rem">🏛️</span>
         <div>
           <div class="edu-deg"><span data-ar>بطاقة العمل الحر — وزارة الموارد البشرية</span><span data-en>Freelance License — Ministry of Human Resources</span></div>
-          <div class="edu-inst"><span data-ar>برمجة وتطوير المواقع الالكترونية</span><span data-en>Websites Programming &amp; Developing</span></div>
+          <div class="edu-inst"><span data-ar>برمجة وتطوير المواقع الإلكترونية</span><span data-en>Website Development</span></div>
         </div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
@@ -917,13 +946,18 @@ body:hover #cursor-glow{opacity:1}
         <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         GitHub
       </a>
-      <a href="mailto:doomyksa@gmail.com?subject=طلب%20السيرة%20الذاتية%20-%20Ahmed%20Alqahtani&body=السلام%20عليكم،%20أرغب%20بالحصول%20على%20نسختكم%20من%20السيرة%20الذاتية.%20شكراً." class="contact-link">
+      <a href="Ahmed-Alqahtani-CV.pdf" download class="contact-link">
+        <svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg>
+        <span data-ar>تحميل السيرة الذاتية</span><span data-en>Download CV</span>
+      </a>
+      <a href="mailto:doomyksa@gmail.com?subject=Job%20Opportunity%20-%20Ahmed%20Alqahtani&body=Hello%20Ahmed,%20I%20would%20like%20to%20discuss%20a%20job%20opportunity." class="contact-link">
         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        <span data-ar>تواصل للتوظيف واطلب السيرة</span><span data-en>Recruitment Contact & CV</span>
+        <span data-ar>تواصل للتوظيف</span><span data-en>Recruitment Contact</span>
       </a>
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div style="font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:6px">
@@ -1053,9 +1087,11 @@ function toggleLang(){
 function toggleEarly(){
   const c=document.getElementById('early-content');
   const a=document.getElementById('early-arrow');
+  const button=c.previousElementSibling;
   const open=c.style.display==='none';
   c.style.display=open?'block':'none';
   a.style.transform=open?'rotate(180deg)':'rotate(0deg)';
+  button.setAttribute('aria-expanded',String(open));
 }
 
 /* ── PAGE-TURN / FOLD TRANSITION ── */
