@@ -749,6 +749,48 @@ body:hover #cursor-glow{opacity:1}
   <div class="divider"></div>
 </section>
 
+<!-- SECURITY & TRUST -->
+<section class="section" id="security">
+  <style>
+  #security .sx-intro{color:var(--muted);max-width:680px;margin:0 0 22px;line-height:1.9}
+  #security .sx-strip{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+  #security .sx-badge{display:inline-flex;align-items:center;gap:7px;background:var(--card);
+    border:1px solid var(--border);border-radius:100px;padding:8px 16px;font-size:.82rem;font-weight:600;color:var(--text);transition:border-color .2s}
+  #security .sx-badge:hover{border-color:var(--green)}
+  #security .sx-badge .sx-i{font-size:1rem}
+  #security .sx-cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad1);color:#fff;
+    padding:11px 24px;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none}
+  #security .sx-line{font-size:.82rem;color:var(--muted);margin:0 0 18px;line-height:1.8}
+  #security .sx-line b{color:var(--green2)}
+  </style>
+  <div class="reveal">
+    <div class="section-label"><span data-ar>الأمان والثقة</span><span data-en>Security & Trust</span></div>
+    <h2 class="section-title"><span data-ar>حماية <span class="grad">مبنية على معايير حقيقية</span></span><span data-en>Protection <span class="grad">Built on Real Standards</span></span></h2>
+    <p class="sx-intro">
+      <span data-ar>كل نظام أبنيه يأتي بطبقات حماية فعلية — ليست شعارات تسويقية. هذه بعض المعايير المطبّقة فعلاً في منصاتي:</span>
+      <span data-en>Every system I build ships with real security layers — not marketing slogans. Here are some standards actually applied in my platforms:</span>
+    </p>
+    <div class="sx-strip">
+      <span class="sx-badge"><span class="sx-i">🔑</span><span data-ar>تشفير bcrypt</span><span data-en>bcrypt hashing</span></span>
+      <span class="sx-badge"><span class="sx-i">🔐</span><span data-ar>مصادقة ثنائية MFA</span><span data-en>MFA / OTP</span></span>
+      <span class="sx-badge"><span class="sx-i">👥</span><span data-ar>صلاحيات RBAC</span><span data-en>RBAC</span></span>
+      <span class="sx-badge"><span class="sx-i">🧱</span><span data-ar>رؤوس CSP / HSTS</span><span data-en>CSP / HSTS</span></span>
+      <span class="sx-badge"><span class="sx-i">💉</span><span data-ar>محصّن ضد الحقن</span><span data-en>Injection-safe</span></span>
+      <span class="sx-badge"><span class="sx-i">💾</span><span data-ar>نسخ مشفّرة</span><span data-en>Encrypted backups</span></span>
+      <span class="sx-badge"><span class="sx-i">📝</span><span data-ar>سجل تدقيق</span><span data-en>Audit log</span></span>
+      <span class="sx-badge"><span class="sx-i">🕵️</span><span data-ar>رصد التهديدات</span><span data-en>Threat detection</span></span>
+      <span class="sx-badge"><span class="sx-i">🔍</span><span data-ar>فحص ثغرات آلي</span><span data-en>Automated scanning</span></span>
+      <span class="sx-badge"><span class="sx-i">🏛️</span><span data-ar>التزام PDPL</span><span data-en>PDPL compliance</span></span>
+    </div>
+    <p class="sx-line">
+      <span data-ar>🤝 <b>عقد رسمي + اتفاقية سرية</b> · <b>خيار تملّك الكود كاملاً</b> · <b>مراجعة طرف ثالث مرحَّب بها</b> · توثيق رسمي قابل للتحقق. لا يوجد نظام محمي 100%، والتزامي مراجعة وتحديث مستمر.</span>
+      <span data-en>🤝 <b>Formal contract + NDA</b> · <b>full source-code ownership option</b> · <b>third-party review welcome</b> · officially verifiable. No system is 100% secure; my commitment is continuous review and updates.</span>
+    </p>
+    <a class="sx-cta" href="https://cybphantom.github.io/business-solutions/#trust"><span data-ar>اطّلع على معايير الأمان كاملة ←</span><span data-en>See full security standards →</span></a>
+  </div>
+  <div class="divider"></div>
+</section>
+
 <!-- SKILLS -->
 <section class="section" id="skills">
   <div class="reveal">
@@ -1137,8 +1179,11 @@ function toggleEarly(){
 })();
 
 /* ── REVEAL ON SCROLL ── */
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.1});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function revealNear(){const vh=innerHeight;document.querySelectorAll('.reveal:not(.visible)').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<vh*1.1&&r.bottom>0){el.classList.add('visible');obs.unobserve(el)}})}
+addEventListener('scroll',revealNear,{passive:true});addEventListener('resize',revealNear,{passive:true});
+revealNear();setTimeout(()=>document.querySelectorAll('.reveal:not(.visible)').forEach(el=>el.classList.add('visible')),2500);
 
 /* ── COUNTER ANIMATION ── */
 function animateCounter(el,target,duration=1400){
@@ -1204,5 +1249,18 @@ lightbox.addEventListener('click',e=>{
 });
 
 </script>
+<style>
+#fab-wa{position:fixed;bottom:22px;inset-inline-start:22px;z-index:300;display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#062e16;text-decoration:none;padding:12px 18px;border-radius:100px;font-weight:800;font-size:.9rem;
+  box-shadow:0 10px 30px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s}
+#fab-wa:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(37,211,102,.55)}
+#fab-wa svg{width:20px;height:20px;fill:#062e16;flex-shrink:0}
+@media print{#fab-wa{display:none!important}}
+@media(max-width:768px){#fab-wa{bottom:16px;inset-inline-start:16px;padding:11px 14px}#fab-wa .fab-wa-txt{display:none}}
+</style>
+<a id="fab-wa" href="https://wa.me/966530670502?text=Hello%2C%20I%27d%20like%20to%20inquire" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.738-.981v.174zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.017-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <span class="fab-wa-txt">WhatsApp</span>
+</a>
 </body>
 </html>
