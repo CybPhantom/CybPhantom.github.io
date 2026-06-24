@@ -194,7 +194,9 @@ body.en .tl-card:hover{transform:translateX(4px)}
 .proj-icon.gold{background:rgba(245,158,11,.15)}
 .proj-icon.green{background:rgba(16,185,129,.15)}
 .proj-name{font-size:.98rem;font-weight:700;margin-bottom:7px;position:relative;z-index:1}
-.proj-desc{color:var(--muted);font-size:.83rem;line-height:1.65;position:relative;z-index:1}
+.proj-desc{color:var(--muted);font-size:.83rem;line-height:1.65;position:relative;z-index:1;margin-bottom:12px}
+.proj-link{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700;color:var(--accent2);text-decoration:none}
+.proj-link:hover{color:var(--accent)}
 
 /* EDUCATION */
 .edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
@@ -615,6 +617,13 @@ body:hover #cursor-glow{opacity:1}
         experienced in automation, secure integrations, AI assistants, and live mapping.
       </span>
     </p>
+    <div style="display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 24px;padding:10px 18px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.28);border-radius:12px;font-size:.8rem;animation:fadeUp .6s .25s ease both">
+      <span style="font-size:1.1rem">🏛️</span>
+      <span style="color:var(--green2);font-weight:700"><span data-ar>مرخّص رسمياً — عمل حر</span><span data-en>Officially Licensed — Freelance</span></span>
+      <a href="https://freelance.sa/certificate-validation" target="_blank" rel="noopener noreferrer" style="color:var(--accent2);font-weight:800;text-decoration:none;direction:ltr">FL-758795208</a>
+      <span style="color:var(--muted)">·</span>
+      <span style="color:var(--muted)"><span data-ar>صالح حتى 2027</span><span data-en>Valid to 2027</span></span>
+    </div>
     <div class="hero-cta">
       <a href="#contact" class="btn-primary">
         ✉️ <span data-ar>تواصل بخصوص فرصة وظيفية</span><span data-en>Discuss a Job Opportunity</span>
@@ -745,6 +754,15 @@ body:hover #cursor-glow{opacity:1}
         <img src="assets/workshop-spare-parts-concept.png" width="1672" height="942" loading="lazy" decoding="async" alt="تصور تجريبي لمنصة طلب وإدارة قطع الغيار للورش ببيانات وهمية">
         <figcaption><strong><span data-ar>منصة قطع غيار للورش</span><span data-en>Workshop Spare-Parts Platform</span></strong><span data-ar>كتالوج وطلبات شراء ومقارنة عروض ومخزون وتوافق مركبات، بأسماء وأسعار وأرقام أصناف تجريبية بالكامل.</span><span data-en>Catalog, purchase requests, quote comparison, stock, and vehicle compatibility using entirely fictional names, prices, and part numbers.</span></figcaption>
       </figure>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;position:relative;z-index:1">
+      <a href="https://cybphantom.github.io/business-solutions/demo.html" class="btn-primary" target="_blank" rel="noopener noreferrer">
+        🖥️ <span data-ar>شاهد العرض التجريبي الآمن</span><span data-en>View Sanitized Platform Demo</span>
+      </a>
+      <a href="https://cybphantom.github.io/business-solutions/" class="btn-business" target="_blank" rel="noopener noreferrer">
+        🏢 <span data-ar>حلول الأعمال والأسعار</span><span data-en>Business Solutions &amp; Pricing</span>
+      </a>
     </div>
 
   </div>
@@ -932,16 +950,19 @@ body:hover #cursor-glow{opacity:1}
       <div class="proj-icon blue">🤖</div>
       <div class="proj-name">Phantom AI</div>
       <div class="proj-desc"><span data-ar>مساعد ذكاء اصطناعي محلي خاص يعمل على أجهزة محلية (Ollama + LLMs + RAG)، مصمم لتقليل نقل البيانات ودعم الخصوصية حسب التصميم.</span><span data-en>Private on-device AI assistant (Ollama + local LLMs + RAG), designed to minimize data transfer and support privacy by design.</span></div>
+      <a class="proj-link" href="https://github.com/CybPhantom" target="_blank" rel="noopener noreferrer">GitHub →</a>
     </div>
     <div class="proj-card reveal reveal-delay-2">
       <div class="proj-icon gold">⚡</div>
       <div class="proj-name">PhantomKit</div>
       <div class="proj-desc"><span data-ar>حزمة تقييم ثغرات أمنية للاختبارات المصرّح بها، مبنية بـ Python غير المتزامن. تشفير وحماية مفعّلة افتراضيًا.</span><span data-en>Vulnerability-assessment toolkit for authorized security testing, built with async Python. Encryption and protection enabled by default.</span></div>
+      <a class="proj-link" href="https://github.com/CybPhantom" target="_blank" rel="noopener noreferrer">GitHub →</a>
     </div>
     <div class="proj-card reveal reveal-delay-3">
       <div class="proj-icon green">🌐</div>
       <div class="proj-name"><span data-ar>مواقع احترافية</span><span data-en>Professional Websites</span></div>
       <div class="proj-desc"><span data-ar>تصميم وتطوير مواقع احترافية بتجربة مستخدم متميزة، متجاوبة مع جميع الأجهزة، مع تحسين SEO وأداء عالٍ.</span><span data-en>Professional website design & development with outstanding UX, responsive on all devices, SEO optimization and high performance.</span></div>
+      <a class="proj-link" href="https://cybphantom.github.io/business-solutions/#website-packs" target="_blank" rel="noopener noreferrer"><span data-ar>باقات المواقع ←</span><span data-en>Website packs →</span></a>
     </div>
   </div>
   <div class="divider"></div>
