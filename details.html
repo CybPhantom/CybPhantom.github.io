@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أحمد القحطاني — التفاصيل التقنية الكاملة</title>
+<meta name="description" content="التفاصيل التقنية الكاملة لمشاريع أحمد القحطاني: وحدات المنصة، الخدمات الخلفية، قواعد البيانات، الاختبارات، والبنية التحتية.">
+<meta name="author" content="Ahmed Sultan Al-Qahtani (CybPhantom)">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#020408;--bg2:#080d14;--card:#0d1520;--card2:#111b28;
+  --border:#1a2840;--border2:#1e3050;
+  --text:#e8f0fe;--muted:#6b7fa3;--muted2:#4a5a7a;
+  --accent:#3b82f6;--accent2:#60a5fa;
+  --green:#10b981;--green2:#34d399;
+  --gold:#f59e0b;--gold2:#fbbf24;
+  --purple:#8b5cf6;--red:#ef4444;
+  --grad1:linear-gradient(135deg,#3b82f6,#10b981);
+  --radius:16px;--radius2:12px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;line-height:1.7;overflow-x:hidden}
+body.en{font-family:'Inter',sans-serif}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+[data-en]{display:none}
+body.en [data-ar]{display:none}
+body.en [data-en]{display:revert}
+
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* TOP BAR */
+.topbar{position:sticky;top:0;z-index:100;padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(2,4,8,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(59,130,246,.1)}
+.topbar a{color:var(--accent2);text-decoration:none;font-size:.88rem;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.topbar a:hover{color:var(--text)}
+.topbar-controls{display:flex;gap:10px}
+.lang-btn{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);color:var(--accent2);
+  padding:6px 14px;border-radius:8px;cursor:pointer;font-size:.82rem;font-weight:600}
+.lang-btn:hover{background:rgba(59,130,246,.2)}
+
+/* HEADER */
+.page-header{padding:80px 0 48px;text-align:center}
+.page-header h1{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:12px}
+.page-header h1 .grad{background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.page-header p{color:var(--muted);font-size:.92rem;max-width:600px;margin:0 auto}
+
+/* SECTIONS */
+.detail-section{padding:48px 0;border-top:1px solid var(--border)}
+.section-label{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.section-label::before{content:'';width:24px;height:2px;background:var(--accent);border-radius:1px}
+body.en .section-label::before{order:-1}
+h2.section-title{font-size:1.4rem;font-weight:800;margin-bottom:28px}
+h2.section-title .grad{background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* MODULE GRID */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.mod-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius2);padding:16px 18px;transition:border-color .2s}
+.mod-card:hover{border-color:var(--border2)}
+.mod-icon{font-size:1.2rem;margin-bottom:6px}
+.mod-name{font-size:.88rem;font-weight:700;margin-bottom:4px}
+.mod-desc{color:var(--muted);font-size:.8rem;line-height:1.6}
+.mod-tech{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.mod-tech span{font-size:.7rem;padding:2px 8px;border-radius:4px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);color:var(--accent2);font-weight:600}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:32px}
+.stat-box{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius2);padding:18px;text-align:center}
+.stat-box .num{font-size:1.8rem;font-weight:900;font-family:'Inter',sans-serif;background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-box .lbl{color:var(--muted);font-size:.76rem;margin-top:4px}
+
+/* SERVICE LIST */
+.svc-list{columns:2;column-gap:16px}
+@media(max-width:600px){.svc-list{columns:1}}
+.svc-item{break-inside:avoid;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:.82rem;color:var(--text);display:flex;align-items:center;gap:8px}
+.svc-item::before{content:'▸';color:var(--accent);font-weight:700;flex-shrink:0}
+
+/* TEST LIST */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.test-card{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:12px 16px;font-size:.82rem}
+.test-card .test-name{font-weight:700;color:var(--green2);margin-bottom:2px}
+.test-card .test-desc{color:var(--muted);font-size:.78rem}
+
+footer{text-align:center;color:var(--muted2);padding:40px 24px;font-size:.76rem;border-top:1px solid var(--border)}
+
+@media(max-width:768px){
+  .topbar{padding:0 16px}
+  .page-header{padding:64px 0 32px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html">← <span data-ar>العودة للبورتفوليو</span><span data-en>Back to Portfolio</span></a>
+  <div class="topbar-controls">
+    <button class="lang-btn" type="button" onclick="document.body.classList.toggle('en');document.documentElement.lang=document.body.classList.contains('en')?'en':'ar';document.documentElement.dir=document.body.classList.contains('en')?'ltr':'rtl'">
+      <span data-ar>English</span><span data-en>العربية</span>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="page-header">
+  <h1><span data-ar>التفاصيل <span class="grad">التقنية الكاملة</span></span><span data-en>Full <span class="grad">Technical Details</span></span></h1>
+  <p><span data-ar>كل وحدة وخدمة وجدول واختبار في المنصة المؤسسية — بالأرقام الحقيقية من الكود المصدري.</span><span data-en>Every module, service, table, and test in the enterprise platform — real numbers from the source code.</span></p>
+</div>
+
+<!-- OVERVIEW STATS -->
+<div class="stats-row">
+  <div class="stat-box"><div class="num">321</div><div class="lbl"><span data-ar>ملف سورس كود</span><span data-en>Source Files</span></div></div>
+  <div class="stat-box"><div class="num">41</div><div class="lbl"><span data-ar>جدول بيانات</span><span data-en>Database Tables</span></div></div>
+  <div class="stat-box"><div class="num">74</div><div class="lbl"><span data-ar>خدمة خلفية</span><span data-en>Backend Services</span></div></div>
+  <div class="stat-box"><div class="num">38</div><div class="lbl"><span data-ar>صفحة تفاعلية</span><span data-en>Interactive Pages</span></div></div>
+  <div class="stat-box"><div class="num">14</div><div class="lbl"><span data-ar>اختبار أمني</span><span data-en>Security Tests</span></div></div>
+  <div class="stat-box"><div class="num">v14</div><div class="lbl"><span data-ar>الإصدار الحالي</span><span data-en>Current Version</span></div></div>
+</div>
+
+<!-- PLATFORM MODULES -->
+<div class="detail-section">
+  <div class="section-label"><span data-ar>وحدات المنصة</span><span data-en>Platform Modules</span></div>
+  <h2 class="section-title"><span data-ar>38 صفحة <span class="grad">تفاعلية</span></span><span data-en>38 Interactive <span class="grad">Pages</span></span></h2>
+  <div class="mod-grid">
+    <div class="mod-card"><div class="mod-icon">📊</div><div class="mod-name"><span data-ar>لوحة القيادة</span><span data-en>Dashboard</span></div><div class="mod-desc"><span data-ar>5 تبويبات: عمليات، تحليلات، تكاليف، كشف احتيال، تنبيهات</span><span data-en>5 tabs: Operations, Analytics, Costs, Fraud Detection, Alerts</span></div></div>
+    <div class="mod-card"><div class="mod-icon">💰</div><div class="mod-name"><span data-ar>المالية والمحاسبة</span><span data-en>Finance & Accounting</span></div><div class="mod-desc"><span data-ar>8 تبويبات: ملخص، فواتير، صيانة، وقود، خدمات، اعتمادات، تحليلات، تكامل Daftra</span><span data-en>8 tabs: Summary, Invoices, Maintenance, Fuel, Services, Approvals, Analytics, Daftra sync</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🚗</div><div class="mod-name"><span data-ar>إدارة الأسطول</span><span data-en>Fleet Management</span></div><div class="mod-desc"><span data-ar>المركبات، تفاصيل المركبة، الفئات، حالة المستندات، الصيانة</span><span data-en>Vehicles, vehicle detail, categories, document status, maintenance</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🏪</div><div class="mod-name"><span data-ar>المستودعات</span><span data-en>Warehouses</span></div><div class="mod-desc"><span data-ar>نظرة عامة + صيانة، استيراد Excel ذكي، تعرّف أعمدة تلقائي</span><span data-en>Overview + Maintenance tabs, smart Excel import, auto column detection</span></div></div>
+    <div class="mod-card"><div class="mod-icon">👥</div><div class="mod-name"><span data-ar>الموارد البشرية</span><span data-en>HR Management</span></div><div class="mod-desc"><span data-ar>إدارة الموظفين، تفاصيل الموظف، الإقامات، الرواتب</span><span data-en>Employee management, employee detail, Iqama tracking, payroll</span></div></div>
+    <div class="mod-card"><div class="mod-icon">💼</div><div class="mod-name"><span data-ar>المبيعات</span><span data-en>Sales</span></div><div class="mod-desc"><span data-ar>صفحة مبيعات، خريطة مبيعات، تفاصيل المسار، عملاء، رسائل العملاء</span><span data-en>Sales page, sales map, route detail, customers, customer messaging</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🛒</div><div class="mod-name"><span data-ar>المشتريات</span><span data-en>Purchases</span></div><div class="mod-desc"><span data-ar>طلبات شراء، مقارنة عروض الموردين، اعتمادات</span><span data-en>Purchase requests, supplier quote comparison, approvals</span></div></div>
+    <div class="mod-card"><div class="mod-icon">📍</div><div class="mod-name"><span data-ar>الخرائط الحية</span><span data-en>Live Mapping</span></div><div class="mod-desc"><span data-ar>MapLibre GL، مسارات ذكية، ورش معتمدة، بحث OpenStreetMap</span><span data-en>MapLibre GL, smart routing, approved workshops, OpenStreetMap search</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🚨</div><div class="mod-name"><span data-ar>الإنقاذ والطوارئ</span><span data-en>Rescue & Emergency</span></div><div class="mod-desc"><span data-ar>أقرب ورشة معتمدة + مطابقة السائق + تكامل WhatsApp</span><span data-en>Nearest approved workshop + driver matching + WhatsApp integration</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🤖</div><div class="mod-name"><span data-ar>الذكاء الاصطناعي</span><span data-en>AI Assistant</span></div><div class="mod-desc"><span data-ar>مساعد عربي مدمج بـ tool-use لتحليل التقارير والبيانات</span><span data-en>Embedded Arabic assistant with tool-use for report and data analysis</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🔐</div><div class="mod-name"><span data-ar>مركز الأمان</span><span data-en>Security Center</span></div><div class="mod-desc"><span data-ar>إدارة المستخدمين، الجلسات، سجل التدقيق، إعدادات النظام</span><span data-en>User management, sessions, audit log, system settings</span></div></div>
+    <div class="mod-card"><div class="mod-icon">✅</div><div class="mod-name"><span data-ar>الاعتمادات والقرارات</span><span data-en>Approvals & Decisions</span></div><div class="mod-desc"><span data-ar>مسار اعتماد قابل للتخصيص، لوحة قرار، تنبيهات</span><span data-en>Configurable approval workflow, decision dashboard, alerts</span></div></div>
+    <div class="mod-card"><div class="mod-icon">📋</div><div class="mod-name"><span data-ar>الامتثال والتقارير</span><span data-en>Compliance & Reports</span></div><div class="mod-desc"><span data-ar>محرك تقارير ديناميكي، امتثال، عمليات ميدانية، Record 360</span><span data-en>Dynamic report engine, compliance, field ops, Record 360</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🏆</div><div class="mod-name"><span data-ar>أداء السائقين</span><span data-en>Driver KPIs</span></div><div class="mod-desc"><span data-ar>مؤشرات أداء، منصة تتويج، تاريخ السائق</span><span data-en>Performance indicators, podium ranking, driver history</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🔑</div><div class="mod-name"><span data-ar>الخزنة الرقمية</span><span data-en>Digital Vault</span></div><div class="mod-desc"><span data-ar>تخزين مشفّر للمستندات والملفات الحساسة</span><span data-en>Encrypted storage for sensitive documents and files</span></div></div>
+    <div class="mod-card"><div class="mod-icon">❄️</div><div class="mod-name"><span data-ar>إدارة المبرّدات</span><span data-en>Freezer Management</span></div><div class="mod-desc"><span data-ar>شهادات المبرّدات، تتبع الحالة والصلاحية</span><span data-en>Freezer certifications, status and expiry tracking</span></div></div>
+    <div class="mod-card"><div class="mod-icon">📒</div><div class="mod-name"><span data-ar>دفتر الأستاذ العام</span><span data-en>General Ledger</span></div><div class="mod-desc"><span data-ar>قيود محاسبية، تحليلات مالية متقدمة</span><span data-en>Accounting entries, advanced financial analytics</span></div></div>
+    <div class="mod-card"><div class="mod-icon">🔗</div><div class="mod-name"><span data-ar>التكاملات الخارجية</span><span data-en>Integrations</span></div><div class="mod-desc"><span data-ar>Daftra محاسبة، ZATCA، خدمات خارجية معتمدة</span><span data-en>Daftra accounting, ZATCA, approved external services</span></div></div>
+  </div>
+</div>
+
+<!-- BACKEND SERVICES -->
+<div class="detail-section">
+  <div class="section-label"><span data-ar>الخدمات الخلفية</span><span data-en>Backend Services</span></div>
+  <h2 class="section-title"><span data-ar>74 خدمة <span class="grad">مستقلة</span></span><span data-en>74 Independent <span class="grad">Services</span></span></h2>
+  <div class="svc-list">
+    <div class="svc-item">AI Assistant Service</div>
+    <div class="svc-item">Analytics Service</div>
+    <div class="svc-item">Approval Service</div>
+    <div class="svc-item">Approved Workshop Service</div>
+    <div class="svc-item">Audit Log Service</div>
+    <div class="svc-item">Auto Sync Service</div>
+    <div class="svc-item">Backup Service (Encrypted)</div>
+    <div class="svc-item">Compliance Service</div>
+    <div class="svc-item">CRUD Service</div>
+    <div class="svc-item">Customer Messaging</div>
+    <div class="svc-item">Customer Service</div>
+    <div class="svc-item">Daftra Bootstrap</div>
+    <div class="svc-item">Daftra Meta Cache</div>
+    <div class="svc-item">Daftra Service</div>
+    <div class="svc-item">Dashboard Service</div>
+    <div class="svc-item">Data Quality Service</div>
+    <div class="svc-item">Decision Service</div>
+    <div class="svc-item">Disk Cleanup Service</div>
+    <div class="svc-item">Driver History Service</div>
+    <div class="svc-item">Driver KPI Service</div>
+    <div class="svc-item">Employee Import</div>
+    <div class="svc-item">Finance Analytics Service</div>
+    <div class="svc-item">Fleet Service</div>
+    <div class="svc-item">Freezer Service</div>
+    <div class="svc-item">Fuel Fraud Service</div>
+    <div class="svc-item">Fuel Import</div>
+    <div class="svc-item">Fuel List Service</div>
+    <div class="svc-item">General Ledger Service</div>
+    <div class="svc-item">Inbox Service</div>
+    <div class="svc-item">Integration Service</div>
+    <div class="svc-item">Invoice Approval Service</div>
+    <div class="svc-item">Iqama Service</div>
+    <div class="svc-item">KML Import</div>
+    <div class="svc-item">Leadership Stats Service</div>
+    <div class="svc-item">Maintenance Fraud Service</div>
+    <div class="svc-item">Maintenance Service</div>
+    <div class="svc-item">Manager Message Service</div>
+    <div class="svc-item">Map Routing Service</div>
+    <div class="svc-item">Message Crypto Service</div>
+    <div class="svc-item">Monitor Service</div>
+    <div class="svc-item">Nav Badges Service</div>
+    <div class="svc-item">Nav Config Service</div>
+    <div class="svc-item">Nearby Workshops Service</div>
+    <div class="svc-item">Notification Service</div>
+    <div class="svc-item">Ownership Service (HMAC)</div>
+    <div class="svc-item">Payroll Service</div>
+    <div class="svc-item">Purchase Request Service</div>
+    <div class="svc-item">Push Notification Service</div>
+    <div class="svc-item">Record 360 Service</div>
+    <div class="svc-item">Report Engine Service</div>
+    <div class="svc-item">Rescue Service</div>
+    <div class="svc-item">Role Tasks Service</div>
+    <div class="svc-item">Sales Reps Service</div>
+    <div class="svc-item">Sales Service</div>
+    <div class="svc-item">SARB Service</div>
+    <div class="svc-item">Search Service</div>
+    <div class="svc-item">Security Center Service</div>
+    <div class="svc-item">Service Import</div>
+    <div class="svc-item">Site Maintenance Service</div>
+    <div class="svc-item">Tombstone Service</div>
+    <div class="svc-item">User Admin Service</div>
+    <div class="svc-item">Vault Service</div>
+    <div class="svc-item">Vehicle Health Service</div>
+    <div class="svc-item">Vehicle Service</div>
+    <div class="svc-item">Warehouse Excel Import</div>
+    <div class="svc-item">Warehouse Service</div>
+    <div class="svc-item">Weekly Report Service</div>
+    <div class="svc-item">Workshop OSM Classify</div>
+    <div class="svc-item">Threat Ban (Security)</div>
+    <div class="svc-item">Backup Encryption</div>
+    <div class="svc-item">Production Guard</div>
+    <div class="svc-item">Login Guard (Brute-force)</div>
+    <div class="svc-item">OTP Service</div>
+    <div class="svc-item">Session Management</div>
+  </div>
+</div>
+
+<!-- SECURITY TESTS -->
+<div class="detail-section">
+  <div class="section-label"><span data-ar>الاختبارات الأمنية</span><span data-en>Security Tests</span></div>
+  <h2 class="section-title"><span data-ar>14 اختبار <span class="grad">أمني مؤتمت</span></span><span data-en>14 Automated <span class="grad">Security Tests</span></span></h2>
+  <div class="test-grid">
+    <div class="test-card"><div class="test-name">permissions.test</div><div class="test-desc"><span data-ar>اختبار نظام الصلاحيات RBAC</span><span data-en>RBAC permissions system test</span></div></div>
+    <div class="test-card"><div class="test-name">permissionMiddleware.test</div><div class="test-desc"><span data-ar>اختبار طبقة التحقق الوسيطة</span><span data-en>Permission middleware layer test</span></div></div>
+    <div class="test-card"><div class="test-name">messageCrypto.test</div><div class="test-desc"><span data-ar>اختبار تشفير الرسائل</span><span data-en>Message encryption test</span></div></div>
+    <div class="test-card"><div class="test-name">backupEncryption.test</div><div class="test-desc"><span data-ar>اختبار تشفير النسخ الاحتياطية</span><span data-en>Backup encryption test</span></div></div>
+    <div class="test-card"><div class="test-name">backupServiceProtection.test</div><div class="test-desc"><span data-ar>اختبار حماية خدمة النسخ</span><span data-en>Backup service protection test</span></div></div>
+    <div class="test-card"><div class="test-name">threatDetection.test</div><div class="test-desc"><span data-ar>اختبار رصد التهديدات</span><span data-en>Threat detection test</span></div></div>
+    <div class="test-card"><div class="test-name">redaction.test</div><div class="test-desc"><span data-ar>اختبار إخفاء البيانات الحساسة</span><span data-en>Sensitive data redaction test</span></div></div>
+    <div class="test-card"><div class="test-name">sanitize.test</div><div class="test-desc"><span data-ar>اختبار تنقية المدخلات</span><span data-en>Input sanitization test</span></div></div>
+    <div class="test-card"><div class="test-name">uploadSafety.test</div><div class="test-desc"><span data-ar>اختبار أمان رفع الملفات</span><span data-en>File upload safety test</span></div></div>
+    <div class="test-card"><div class="test-name">otp.test</div><div class="test-desc"><span data-ar>اختبار المصادقة الثنائية OTP</span><span data-en>OTP two-factor auth test</span></div></div>
+    <div class="test-card"><div class="test-name">normalizeSpareLabel.test</div><div class="test-desc"><span data-ar>اختبار توحيد تسميات القطع</span><span data-en>Spare label normalization test</span></div></div>
+    <div class="test-card"><div class="test-name">vehicleStatus.test</div><div class="test-desc"><span data-ar>اختبار حالة المركبات</span><span data-en>Vehicle status logic test</span></div></div>
+    <div class="test-card"><div class="test-name">workshopOsmClassify.test</div><div class="test-desc"><span data-ar>اختبار تصنيف ورش OpenStreetMap</span><span data-en>Workshop OSM classification test</span></div></div>
+    <div class="test-card"><div class="test-name">Gitleaks + Semgrep + Dependabot</div><div class="test-desc"><span data-ar>فحص تسريب الأسرار وثغرات الكود والتبعيات</span><span data-en>Secret leak, code vulnerability, and dependency scanning</span></div></div>
+  </div>
+</div>
+
+<!-- TECH STACK DETAIL -->
+<div class="detail-section">
+  <div class="section-label"><span data-ar>البنية التحتية</span><span data-en>Tech Stack</span></div>
+  <h2 class="section-title"><span data-ar>الأدوات <span class="grad">والتقنيات المستخدمة</span></span><span data-en>Tools <span class="grad">& Technologies Used</span></span></h2>
+  <div class="mod-grid">
+    <div class="mod-card">
+      <div class="mod-name">Frontend</div>
+      <div class="mod-tech"><span>React 19</span><span>Vite</span><span>TypeScript</span><span>TanStack Query</span><span>React Router</span><span>Recharts</span><span>MapLibre GL</span><span>PWA</span><span>Web Push</span></div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-name">Backend</div>
+      <div class="mod-tech"><span>Node.js</span><span>Express.js</span><span>TypeScript</span><span>better-sqlite3</span><span>bcrypt</span><span>Multer</span><span>node-cron</span><span>web-push</span><span>xlsx</span></div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-name"><span data-ar>الأمان</span><span data-en>Security</span></div>
+      <div class="mod-tech"><span>RBAC (6 roles)</span><span>MFA/OTP</span><span>HMAC-SHA256</span><span>bcrypt</span><span>CSP/HSTS</span><span>Threat Ban</span><span>Audit Log</span><span>PDPL</span></div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-name"><span data-ar>البنية التحتية</span><span data-en>Infrastructure</span></div>
+      <div class="mod-tech"><span>Render Cloud</span><span>GitHub</span><span>CI/CD</span><span>Docker</span><span>SSL/TLS</span><span>Gitleaks</span><span>Semgrep</span><span>Lighthouse</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  <span data-ar>© 2026 أحمد القحطاني — جميع الحقوق محفوظة</span>
+  <span data-en>© 2026 Ahmed Alqahtani — All rights reserved</span>
+</footer>
+
+</body>
+</html>
